@@ -99,9 +99,9 @@ export default function Home() {
                 <h3 className="text-xl font-semibold mb-2">Build Intelligent Apps</h3>
                 <p className="text-blue-100 mb-4">Start Today</p>
                 <Link href="/contact">
-                  <a className="text-white font-medium hover:text-blue-100 transition-colors" data-testid="link-contact">
+                  <span className="text-white font-medium hover:text-blue-100 transition-colors cursor-pointer" data-testid="link-contact">
                     Contact Us →
-                  </a>
+                  </span>
                 </Link>
               </CardContent>
             </Card>
@@ -128,9 +128,9 @@ export default function Home() {
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">Software Staff Augmentation</h3>
                 <p className="text-gray-600 mb-4">We scale your team with the essential personnel your development team needs.</p>
                 <Link href="/services/staff-augmentation">
-                  <a className="text-blue-600 font-medium hover:text-blue-700 transition-colors" data-testid="link-staff-augmentation">
+                  <span className="text-blue-600 font-medium hover:text-blue-700 transition-colors cursor-pointer" data-testid="link-staff-augmentation">
                     Staff augmentation →
-                  </a>
+                  </span>
                 </Link>
               </CardContent>
             </Card>
@@ -143,9 +143,9 @@ export default function Home() {
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">Dedicated Development Team</h3>
                 <p className="text-gray-600 mb-4">We build dedicated outsourced development teams.</p>
                 <Link href="/services/dedicated-team">
-                  <a className="text-blue-600 font-medium hover:text-blue-700 transition-colors" data-testid="link-dedicated-team">
+                  <span className="text-blue-600 font-medium hover:text-blue-700 transition-colors cursor-pointer" data-testid="link-dedicated-team">
                     Dedicated Team →
-                  </a>
+                  </span>
                 </Link>
               </CardContent>
             </Card>
@@ -158,9 +158,9 @@ export default function Home() {
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">Project Delivery & Management</h3>
                 <p className="text-gray-600 mb-4">We write requirements, manage tasks, and deliver your software solution.</p>
                 <Link href="/services/project-delivery">
-                  <a className="text-blue-600 font-medium hover:text-blue-700 transition-colors" data-testid="link-project-delivery">
+                  <span className="text-blue-600 font-medium hover:text-blue-700 transition-colors cursor-pointer" data-testid="link-project-delivery">
                     Project Delivery →
-                  </a>
+                  </span>
                 </Link>
               </CardContent>
             </Card>
@@ -173,9 +173,9 @@ export default function Home() {
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">Virtual CTO Consulting</h3>
                 <p className="text-gray-600 mb-4">We advise and architect scaleable and secure technology solutions.</p>
                 <Link href="/services/virtual-cto">
-                  <a className="text-blue-600 font-medium hover:text-blue-700 transition-colors" data-testid="link-virtual-cto">
+                  <span className="text-blue-600 font-medium hover:text-blue-700 transition-colors cursor-pointer" data-testid="link-virtual-cto">
                     Virtual CTO →
-                  </a>
+                  </span>
                 </Link>
               </CardContent>
             </Card>

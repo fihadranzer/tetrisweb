@@ -117,7 +117,7 @@ export default function ContactFormManager() {
                   <SelectValue placeholder="All submissions" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">All Submissions</SelectItem>
+                  <SelectItem value="all">All Submissions</SelectItem>
                   <SelectItem value="new">New</SelectItem>
                   <SelectItem value="read">Read</SelectItem>
                   <SelectItem value="replied">Replied</SelectItem>

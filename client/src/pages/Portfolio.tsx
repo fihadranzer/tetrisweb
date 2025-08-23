@@ -33,9 +33,9 @@ export default function Portfolio() {
                          caseStudy.shortDescription?.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          caseStudy.clientName?.toLowerCase().includes(searchTerm.toLowerCase());
     
-    const matchesCategory = !selectedCategory || caseStudy.categoryId === selectedCategory;
+    const matchesCategory = !selectedCategory || selectedCategory === "all" || caseStudy.categoryId === selectedCategory;
     
-    const matchesTechnology = !selectedTechnology || 
+    const matchesTechnology = !selectedTechnology || selectedTechnology === "all" || 
                              (caseStudy.technologies && caseStudy.technologies.includes(selectedTechnology));
 
     return matchesSearch && matchesCategory && matchesTechnology;
@@ -79,7 +79,7 @@ export default function Portfolio() {
                 <SelectValue placeholder="All Categories" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All Categories</SelectItem>
+                <SelectItem value="all">All Categories</SelectItem>
                 {categories.map((category: any) => (
                   <SelectItem key={category.id} value={category.id}>
                     {category.name}
@@ -93,7 +93,7 @@ export default function Portfolio() {
                 <SelectValue placeholder="All Technologies" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All Technologies</SelectItem>
+                <SelectItem value="all">All Technologies</SelectItem>
                 {allTechnologies.map((tech: string) => (
                   <SelectItem key={tech} value={tech}>
                     {tech}

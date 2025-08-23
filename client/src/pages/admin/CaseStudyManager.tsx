@@ -388,7 +388,7 @@ export default function CaseStudyManager() {
                       <SelectValue placeholder="Select category" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="">No category</SelectItem>
+                      <SelectItem value="none">No category</SelectItem>
                       {categories.map((category: any) => (
                         <SelectItem key={category.id} value={category.id}>
                           {category.name}

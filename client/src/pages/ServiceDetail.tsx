@@ -43,10 +43,10 @@ export default function ServiceDetail() {
         {/* Breadcrumb */}
         <nav className="mb-8">
           <Link href="/services">
-            <a className="inline-flex items-center text-blue-600 hover:text-blue-700 transition-colors" data-testid="link-back-services">
+            <span className="inline-flex items-center text-blue-600 hover:text-blue-700 transition-colors cursor-pointer" data-testid="link-back-services">
               <ArrowLeft className="mr-2 h-4 w-4" />
               Back to Services
-            </a>
+            </span>
           </Link>
         </nav>
 

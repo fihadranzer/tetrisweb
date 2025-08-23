@@ -108,13 +108,13 @@ export default function ServiceCard({ service, showFullDescription = false }: Se
         )}
         
         <Link href={`/services/${service.slug}`}>
-          <a 
-            className="text-blue-600 font-medium hover:text-blue-700 transition-colors inline-flex items-center group"
+          <span 
+            className="text-blue-600 font-medium hover:text-blue-700 transition-colors inline-flex items-center group cursor-pointer"
             data-testid={`link-service-${service.slug}`}
           >
             Learn More
             <ArrowRight className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-          </a>
+          </span>
         </Link>
       </CardContent>
     </Card>
