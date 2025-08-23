@@ -22,8 +22,14 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
   const { user } = useAuth();
   const [location] = useLocation();
 
-  const handleLogout = () => {
-    window.location.href = "/api/logout";
+  const handleLogout = async () => {
+    try {
+      await fetch('/api/auth/logout', { method: 'POST' });
+      window.location.href = '/';
+    } catch (error) {
+      console.error('Logout error:', error);
+      window.location.href = '/';
+    }
   };
 
   const navigation = [

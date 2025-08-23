@@ -20,9 +20,60 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Auth middleware
   await setupAuth(app);
 
-  // Auth routes
-  app.get('/api/auth/user', isAuthenticated, async (req: any, res) => {
+  // Direct Admin Login Route (bypasses Replit Auth)
+  app.post('/api/admin/login', async (req, res) => {
     try {
+      const { email } = req.body;
+      
+      if (!email) {
+        return res.status(400).json({ message: 'Email is required' });
+      }
+      
+      const user = await storage.getUserByEmail(email);
+      
+      if (!user || !user.isAdmin) {
+        return res.status(401).json({ message: 'Invalid credentials or not an admin' });
+      }
+      
+      // Set session for direct login
+      (req.session as any).directAdminUser = {
+        id: user.id,
+        email: user.email,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        isAdmin: user.isAdmin,
+        loginType: 'direct'
+      };
+      
+      res.json({ 
+        message: 'Login successful', 
+        user: {
+          id: user.id,
+          email: user.email,
+          firstName: user.firstName,
+          lastName: user.lastName,
+          isAdmin: user.isAdmin
+        }
+      });
+    } catch (error) {
+      console.error('Direct admin login error:', error);
+      res.status(500).json({ message: 'Internal server error' });
+    }
+  });
+  
+  // Auth routes  
+  app.get('/api/auth/user', async (req: any, res) => {
+    try {
+      // Check for direct admin login first
+      if ((req.session as any).directAdminUser) {
+        return res.json((req.session as any).directAdminUser);
+      }
+      
+      // Then check Replit Auth
+      if (!req.isAuthenticated() || !req.user?.claims?.sub) {
+        return res.status(401).json({ message: "Unauthorized" });
+      }
+      
       const userId = req.user.claims.sub;
       const user = await storage.getUser(userId);
       res.json(user);
@@ -30,6 +81,20 @@ export async function registerRoutes(app: Express): Promise<Server> {
       console.error("Error fetching user:", error);
       res.status(500).json({ message: "Failed to fetch user" });
     }
+  });
+  
+  // Logout route for both direct and Replit auth
+  app.post('/api/auth/logout', (req, res) => {
+    // Clear direct admin session
+    if ((req.session as any).directAdminUser) {
+      delete (req.session as any).directAdminUser;
+      return res.json({ message: 'Logged out successfully' });
+    }
+    
+    // Handle Replit auth logout
+    req.logout(() => {
+      res.json({ message: 'Logged out successfully' });
+    });
   });
 
   // Public API routes

@@ -1,10 +1,57 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Shield, Key, Users } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Shield, Key, Users, Mail, LogIn } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
+import { useMutation } from "@tanstack/react-query";
+import { apiRequest } from "@/lib/queryClient";
 
 export default function AdminLogin() {
-  const handleLogin = () => {
+  const [email, setEmail] = useState('');
+  const [showDirectLogin, setShowDirectLogin] = useState(false);
+  const { toast } = useToast();
+  
+  const handleReplitLogin = () => {
     window.location.href = "/api/login";
+  };
+  
+  const directLoginMutation = useMutation({
+    mutationFn: async (email: string) => {
+      return await apiRequest('/api/admin/login', {
+        method: 'POST',
+        body: { email }
+      });
+    },
+    onSuccess: () => {
+      toast({
+        title: "Login Successful",
+        description: "Redirecting to admin panel...",
+      });
+      // Reload to trigger auth check
+      window.location.reload();
+    },
+    onError: (error: any) => {
+      toast({
+        title: "Login Failed", 
+        description: error.message || "Invalid credentials or not an admin",
+        variant: "destructive",
+      });
+    }
+  });
+  
+  const handleDirectLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email.trim()) {
+      toast({
+        title: "Email Required",
+        description: "Please enter your admin email address",
+        variant: "destructive",
+      });
+      return;
+    }
+    directLoginMutation.mutate(email);
   };
 
   return (
@@ -29,15 +76,72 @@ export default function AdminLogin() {
                 Please authenticate to access the content management system.
               </p>
               
-              <Button 
-                onClick={handleLogin}
-                className="w-full"
-                size="lg"
-                data-testid="button-admin-login"
-              >
-                <Key className="mr-2 h-4 w-4" />
-                Login with Replit Auth
-              </Button>
+              {!showDirectLogin ? (
+                <div className="space-y-4">
+                  <Button 
+                    onClick={handleReplitLogin}
+                    className="w-full"
+                    size="lg"
+                    data-testid="button-replit-login"
+                  >
+                    <Key className="mr-2 h-4 w-4" />
+                    Login with Replit Auth
+                  </Button>
+                  
+                  <div className="text-center">
+                    <button
+                      onClick={() => setShowDirectLogin(true)}
+                      className="text-sm text-blue-600 hover:text-blue-800 underline"
+                      data-testid="button-show-direct-login"
+                    >
+                      Or login directly as admin
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <form onSubmit={handleDirectLogin} className="space-y-4">
+                  <div className="text-left">
+                    <Label htmlFor="email">Admin Email</Label>
+                    <Input
+                      id="email"
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="admin@pitetris.com"
+                      className="mt-1"
+                      data-testid="input-admin-email"
+                    />
+                  </div>
+                  
+                  <Button 
+                    type="submit"
+                    className="w-full"
+                    size="lg"
+                    disabled={directLoginMutation.isPending}
+                    data-testid="button-direct-login"
+                  >
+                    {directLoginMutation.isPending ? (
+                      <>Loading...</>
+                    ) : (
+                      <>
+                        <LogIn className="mr-2 h-4 w-4" />
+                        Login as Admin
+                      </>
+                    )}
+                  </Button>
+                  
+                  <div className="text-center">
+                    <button
+                      type="button"
+                      onClick={() => setShowDirectLogin(false)}
+                      className="text-sm text-gray-600 hover:text-gray-800 underline"
+                      data-testid="button-back-to-replit"
+                    >
+                      Back to Replit Auth
+                    </button>
+                  </div>
+                </form>
+              )}
             </div>
 
             <div className="border-t border-gray-200 pt-6">
