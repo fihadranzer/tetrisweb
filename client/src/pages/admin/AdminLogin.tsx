@@ -22,10 +22,20 @@ export default function AdminLogin() {
   
   const directLoginMutation = useMutation({
     mutationFn: async ({ email, password }: { email: string; password: string }) => {
-      return await apiRequest('/api/admin/login', {
+      const response = await fetch('/api/admin/login', {
         method: 'POST',
-        body: { email, password }
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
       });
+      
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({ message: 'Login failed' }));
+        throw new Error(errorData.message || 'Login failed');
+      }
+      
+      return response.json();
     },
     onSuccess: () => {
       toast({
@@ -105,9 +115,8 @@ export default function AdminLogin() {
                 <form onSubmit={handleDirectLogin} className="space-y-4">
                   <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
                     <div className="text-sm text-blue-800">
-                      <strong>Admin Credentials:</strong><br/>
-                      Email: admin@pitetris.com<br/>
-                      Password: admin123
+                      <strong>Admin Login:</strong><br/>
+                      Use your admin credentials to access the content management system.
                     </div>
                   </div>
                   
