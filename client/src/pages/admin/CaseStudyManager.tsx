@@ -289,15 +289,22 @@ export default function CaseStudyManager() {
 
                 <div>
                   <Label>Project Image</Label>
-                  <div className="mt-2">
-                    <ObjectUploader
-                      onGetUploadParameters={handleImageUpload}
-                      onComplete={handleImageUploadComplete}
-                      maxNumberOfFiles={1}
-                      maxFileSize={10 * 1024 * 1024} // 10MB
+                  <div className="mt-2" style={{ isolation: 'isolate' }}>
+                    <div 
+                      className="upload-container" 
+                      onClick={(e) => e.stopPropagation()}
+                      onKeyDown={(e) => e.stopPropagation()}
+                      style={{ pointerEvents: 'auto', isolation: 'isolate' }}
                     >
-                      <span>Upload Project Image</span>
-                    </ObjectUploader>
+                      <ObjectUploader
+                        onGetUploadParameters={handleImageUpload}
+                        onComplete={handleImageUploadComplete}
+                        maxNumberOfFiles={1}
+                        maxFileSize={10 * 1024 * 1024} // 10MB
+                      >
+                        <span>Upload Project Image</span>
+                      </ObjectUploader>
+                    </div>
                     {editingItem.imageUrl && (
                       <div className="mt-2">
                         <img src={editingItem.imageUrl} alt="Project preview" className="w-32 h-20 object-cover rounded border" />
