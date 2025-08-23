@@ -11,7 +11,7 @@ const techCategories = [
 ];
 
 export default function Technologies() {
-  const { data: technologies, isLoading } = useQuery({
+  const { data: technologies = [], isLoading } = useQuery({
     queryKey: ['/api/technologies'],
   });
 
@@ -30,7 +30,7 @@ export default function Technologies() {
 
   const groupedTechnologies = techCategories.map(category => ({
     ...category,
-    technologies: technologies?.filter((tech: any) => tech.category === category.key) || []
+    technologies: (technologies as any[]).filter((tech: any) => tech.category === category.key)
   }));
 
   return (
@@ -101,13 +101,13 @@ export default function Technologies() {
             </p>
           </div>
 
-          {!technologies || technologies.length === 0 ? (
+          {!technologies || (technologies as any[]).length === 0 ? (
             <div className="text-center py-12">
               <p className="text-pi-gray text-lg" data-testid="text-no-technologies">No technologies available at the moment.</p>
             </div>
           ) : (
             <div className="flex flex-wrap gap-3 justify-center">
-              {technologies.map((tech: any) => {
+              {(technologies as any[]).map((tech: any) => {
                 const category = techCategories.find(cat => cat.key === tech.category);
                 return (
                   <Badge 

@@ -12,7 +12,7 @@ export default function Navigation() {
   const [location] = useLocation();
 
   const navigation = [
-    { name: "Technologies", href: "#technologies" },
+    { name: "Technologies", href: "/technologies" },
     { name: "Portfolio", href: "/portfolio" },
     { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
@@ -50,10 +50,7 @@ export default function Navigation() {
   };
 
   const handleMouseLeaveServices = () => {
-    // Add a small delay before closing to prevent accidental closes
-    setTimeout(() => {
-      setIsServicesOpen(false);
-    }, 150);
+    setIsServicesOpen(false);
   };
 
   return (
@@ -79,13 +76,10 @@ export default function Navigation() {
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
               {/* Services Dropdown */}
-              <div 
-                className="relative"
-                onMouseEnter={handleMouseEnterServices}
-                onMouseLeave={handleMouseLeaveServices}
-              >
+              <div className="relative group">
                 <button
                   onClick={handleServicesToggle}
+                  onMouseEnter={handleMouseEnterServices}
                   className={`flex items-center px-3 py-2 text-sm font-medium transition-colors ${
                     location.startsWith('/services') 
                       ? "text-blue-600"
@@ -215,12 +209,17 @@ export default function Navigation() {
     </nav>
     
     {/* Services Mega Menu - Positioned outside nav for full width */}
-    <ServicesMegaMenu isOpen={isServicesOpen} onClose={handleCloseServices} />
+    <div 
+      onMouseLeave={handleMouseLeaveServices}
+      className={isServicesOpen ? "block" : "hidden"}
+    >
+      <ServicesMegaMenu isOpen={isServicesOpen} onClose={handleCloseServices} />
+    </div>
     
     {/* Backdrop for mega menu */}
     {isServicesOpen && (
       <div 
-        className="fixed inset-0 bg-black bg-opacity-20 z-40" 
+        className="fixed inset-0 bg-black bg-opacity-10 z-40" 
         onClick={handleCloseServices}
       />
     )}

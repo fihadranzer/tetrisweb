@@ -12,6 +12,7 @@ import Portfolio from "@/pages/Portfolio";
 import CaseStudyDetail from "@/pages/CaseStudyDetail";
 import About from "@/pages/About";
 import Contact from "@/pages/Contact";
+import Technologies from "@/pages/Technologies";
 import AdminLogin from "@/pages/admin/AdminLogin";
 import AdminHome from "@/pages/admin/AdminHome";
 import ContentManager from "@/pages/admin/ContentManager";
@@ -47,6 +48,7 @@ function PublicRoutes() {
         <Route path="/portfolio" component={Portfolio} />
         <Route path="/case-studies/:slug" component={CaseStudyDetail} />
         <Route path="/about" component={About} />
+        <Route path="/technologies" component={Technologies} />
         <Route path="/contact" component={Contact} />
         <Route component={NotFound} />
       </Switch>
