@@ -52,33 +52,33 @@ export default function StaffAugmentation() {
                     </CardContent>
                   </Card>
                   
-                  <Card className="border-blue-200">
+                  <Card className="border-blue-200 hover:shadow-lg transition-shadow">
                     <CardContent className="p-6">
                       <div className="flex items-center mb-4">
-                        <Target className="w-6 h-6 text-blue-600 mr-3" />
-                        <h3 className="text-lg font-semibold">Skill-Specific</h3>
+                        <DollarSign className="w-6 h-6 text-blue-600 mr-3" />
+                        <h3 className="text-lg font-semibold">Cost Efficiency</h3>
                       </div>
-                      <p className="text-gray-600">Get exactly the expertise you need for specific technologies or projects.</p>
+                      <p className="text-gray-600">Save 40-60% on development costs while avoiding recruitment fees, benefits, and overhead expenses.</p>
                     </CardContent>
                   </Card>
                   
-                  <Card className="border-purple-200">
+                  <Card className="border-purple-200 hover:shadow-lg transition-shadow">
                     <CardContent className="p-6">
                       <div className="flex items-center mb-4">
-                        <Users className="w-6 h-6 text-purple-600 mr-3" />
-                        <h3 className="text-lg font-semibold">Cultural Fit</h3>
+                        <Shield className="w-6 h-6 text-purple-600 mr-3" />
+                        <h3 className="text-lg font-semibold">Risk Mitigation</h3>
                       </div>
-                      <p className="text-gray-600">Our developers adapt to your team culture and working style.</p>
+                      <p className="text-gray-600">Reduce hiring risks with pre-vetted talent and flexible engagement terms that adapt to project needs.</p>
                     </CardContent>
                   </Card>
                   
-                  <Card className="border-orange-200">
+                  <Card className="border-orange-200 hover:shadow-lg transition-shadow">
                     <CardContent className="p-6">
                       <div className="flex items-center mb-4">
-                        <Code className="w-6 h-6 text-orange-600 mr-3" />
-                        <h3 className="text-lg font-semibold">Flexible Duration</h3>
+                        <Globe className="w-6 h-6 text-orange-600 mr-3" />
+                        <h3 className="text-lg font-semibold">Global Talent Pool</h3>
                       </div>
-                      <p className="text-gray-600">Short-term or long-term engagements based on your project needs.</p>
+                      <p className="text-gray-600">Access top-tier developers from around the world, bringing diverse perspectives and expertise to your projects.</p>
                     </CardContent>
                   </Card>
                 </div>
