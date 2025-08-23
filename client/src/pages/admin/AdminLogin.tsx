@@ -9,19 +9,22 @@ import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 
 export default function AdminLogin() {
-  const [email, setEmail] = useState('');
-  const [showDirectLogin, setShowDirectLogin] = useState(false);
+  const [email, setEmail] = useState('admin@pitetris.com');
+  const [password, setPassword] = useState('');
+  const [showDirectLogin, setShowDirectLogin] = useState(true); // Show direct login by default
   const { toast } = useToast();
   
   const handleReplitLogin = () => {
+    // Store redirect path for after Replit auth
+    sessionStorage.setItem('redirectAfterAuth', '/admin');
     window.location.href = "/api/login";
   };
   
   const directLoginMutation = useMutation({
-    mutationFn: async (email: string) => {
+    mutationFn: async ({ email, password }: { email: string; password: string }) => {
       return await apiRequest('/api/admin/login', {
         method: 'POST',
-        body: { email }
+        body: { email, password }
       });
     },
     onSuccess: () => {
@@ -43,15 +46,15 @@ export default function AdminLogin() {
   
   const handleDirectLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email.trim()) {
+    if (!email.trim() || !password.trim()) {
       toast({
-        title: "Email Required",
-        description: "Please enter your admin email address",
+        title: "All Fields Required",
+        description: "Please enter both email and password",
         variant: "destructive",
       });
       return;
     }
-    directLoginMutation.mutate(email);
+    directLoginMutation.mutate({ email, password });
   };
 
   return (
@@ -94,12 +97,20 @@ export default function AdminLogin() {
                       className="text-sm text-blue-600 hover:text-blue-800 underline"
                       data-testid="button-show-direct-login"
                     >
-                      Or login directly as admin
+                      Use Admin Credentials
                     </button>
                   </div>
                 </div>
               ) : (
                 <form onSubmit={handleDirectLogin} className="space-y-4">
+                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
+                    <div className="text-sm text-blue-800">
+                      <strong>Admin Credentials:</strong><br/>
+                      Email: admin@pitetris.com<br/>
+                      Password: admin123
+                    </div>
+                  </div>
+                  
                   <div className="text-left">
                     <Label htmlFor="email">Admin Email</Label>
                     <Input
@@ -110,6 +121,19 @@ export default function AdminLogin() {
                       placeholder="admin@pitetris.com"
                       className="mt-1"
                       data-testid="input-admin-email"
+                    />
+                  </div>
+                  
+                  <div className="text-left">
+                    <Label htmlFor="password">Admin Password</Label>
+                    <Input
+                      id="password"
+                      type="password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      placeholder="Enter admin password"
+                      className="mt-1"
+                      data-testid="input-admin-password"
                     />
                   </div>
                   
@@ -137,7 +161,7 @@ export default function AdminLogin() {
                       className="text-sm text-gray-600 hover:text-gray-800 underline"
                       data-testid="button-back-to-replit"
                     >
-                      Back to Replit Auth
+                      Use Replit Auth Instead
                     </button>
                   </div>
                 </form>

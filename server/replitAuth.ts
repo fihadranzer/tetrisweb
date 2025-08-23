@@ -109,9 +109,39 @@ export async function setupAuth(app: Express) {
   });
 
   app.get("/api/callback", (req, res, next) => {
-    passport.authenticate(`replitauth:${req.hostname}`, {
-      successReturnToOrRedirect: "/",
-      failureRedirect: "/api/login",
+    passport.authenticate(`replitauth:${req.hostname}`, async (err: any, user: any) => {
+      if (err) {
+        return res.redirect("/api/login");
+      }
+      if (!user) {
+        return res.redirect("/api/login");
+      }
+      
+      req.logIn(user, async (err: any) => {
+        if (err) {
+          return res.redirect("/api/login");
+        }
+        
+        try {
+          // Check if user is admin after login
+          const userId = user.claims?.sub;
+          if (userId) {
+            const dbUser = await storage.getUser(userId);
+            if (dbUser?.isAdmin) {
+              // Check for stored redirect path
+              const redirectPath = req.session?.redirectAfterAuth || '/admin';
+              delete req.session?.redirectAfterAuth;
+              return res.redirect(redirectPath);
+            }
+          }
+          
+          // Regular user or no admin found, go to home
+          res.redirect("/");
+        } catch (error) {
+          console.error('Error checking user admin status:', error);
+          res.redirect("/");
+        }
+      });
     })(req, res, next);
   });
 

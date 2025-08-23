@@ -23,15 +23,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Direct Admin Login Route (bypasses Replit Auth)
   app.post('/api/admin/login', async (req, res) => {
     try {
-      const { email } = req.body;
+      const { email, password } = req.body;
       
-      if (!email) {
-        return res.status(400).json({ message: 'Email is required' });
+      if (!email || !password) {
+        return res.status(400).json({ message: 'Email and password are required' });
       }
       
       const user = await storage.getUserByEmail(email);
       
-      if (!user || !user.isAdmin) {
+      if (!user || !user.isAdmin || user.adminPassword !== password) {
         return res.status(401).json({ message: 'Invalid credentials or not an admin' });
       }
       
