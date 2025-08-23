@@ -34,6 +34,81 @@ export default function Services() {
           </p>
         </div>
 
+        {/* Service Models Overview */}
+        <section className="mb-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div className="bg-blue-50 rounded-2xl p-8">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">Service Models</h2>
+              <p className="text-gray-600 mb-6">
+                We are here to accommodate you. From a single pair of hands to entire teams and expert technical advice, we are flexible enough to support you in the ways you need.
+              </p>
+              <div className="space-y-4">
+                <div className="flex items-center text-sm text-gray-700">
+                  <div className="w-2 h-2 bg-blue-600 rounded-full mr-3"></div>
+                  Dedicated Development Teams
+                </div>
+                <div className="flex items-center text-sm text-gray-700">
+                  <div className="w-2 h-2 bg-blue-600 rounded-full mr-3"></div>
+                  Software Staff Augmentation
+                </div>
+                <div className="flex items-center text-sm text-gray-700">
+                  <div className="w-2 h-2 bg-blue-600 rounded-full mr-3"></div>
+                  Project Delivery & Management
+                </div>
+                <div className="flex items-center text-sm text-gray-700">
+                  <div className="w-2 h-2 bg-blue-600 rounded-full mr-3"></div>
+                  Virtual CTO Consulting
+                </div>
+              </div>
+            </div>
+            
+            <div className="bg-green-50 rounded-2xl p-8">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">Custom Solutions Expertise</h2>
+              <p className="text-gray-600 mb-6">
+                Our technical expertise spans across modern technologies and frameworks, enabling us to build cutting-edge solutions for any industry.
+              </p>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <div className="flex items-center text-sm text-gray-700">
+                    <div className="w-2 h-2 bg-green-600 rounded-full mr-2"></div>
+                    AI & Machine Learning
+                  </div>
+                  <div className="flex items-center text-sm text-gray-700">
+                    <div className="w-2 h-2 bg-green-600 rounded-full mr-2"></div>
+                    Web Applications
+                  </div>
+                  <div className="flex items-center text-sm text-gray-700">
+                    <div className="w-2 h-2 bg-green-600 rounded-full mr-2"></div>
+                    Mobile Development
+                  </div>
+                  <div className="flex items-center text-sm text-gray-700">
+                    <div className="w-2 h-2 bg-green-600 rounded-full mr-2"></div>
+                    ERP/CRM/CMS
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <div className="flex items-center text-sm text-gray-700">
+                    <div className="w-2 h-2 bg-green-600 rounded-full mr-2"></div>
+                    Data Engineering
+                  </div>
+                  <div className="flex items-center text-sm text-gray-700">
+                    <div className="w-2 h-2 bg-green-600 rounded-full mr-2"></div>
+                    Cloud Services
+                  </div>
+                  <div className="flex items-center text-sm text-gray-700">
+                    <div className="w-2 h-2 bg-green-600 rounded-full mr-2"></div>
+                    AI Chatbots
+                  </div>
+                  <div className="flex items-center text-sm text-gray-700">
+                    <div className="w-2 h-2 bg-green-600 rounded-full mr-2"></div>
+                    Custom Software
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {services.map((service: any) => (

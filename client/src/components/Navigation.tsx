@@ -2,15 +2,16 @@ import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import logoImage from "@assets/WhatsApp Image 2025-08-23 at 9.17.05 PM_1755962247143.jpeg";
+import ServicesMegaMenu from "@/components/ServicesMegaMenu";
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [location] = useLocation();
 
   const navigation = [
-    { name: "Services", href: "/services" },
     { name: "Technologies", href: "#technologies" },
     { name: "Portfolio", href: "/portfolio" },
     { name: "About", href: "/about" },
@@ -26,6 +27,7 @@ export default function Navigation() {
 
   const handleNavClick = (href: string) => {
     setIsOpen(false);
+    setIsServicesOpen(false);
     if (href.startsWith("#")) {
       // Smooth scroll for hash links
       const element = document.querySelector(href);
@@ -33,6 +35,14 @@ export default function Navigation() {
         element.scrollIntoView({ behavior: "smooth" });
       }
     }
+  };
+
+  const handleServicesToggle = () => {
+    setIsServicesOpen(!isServicesOpen);
+  };
+
+  const handleCloseServices = () => {
+    setIsServicesOpen(false);
   };
 
   return (
@@ -56,6 +66,26 @@ export default function Navigation() {
           {/* Desktop Navigation */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
+              {/* Services Dropdown */}
+              <div className="relative">
+                <button
+                  onClick={handleServicesToggle}
+                  className={`flex items-center px-3 py-2 text-sm font-medium transition-colors ${
+                    location.startsWith('/services') 
+                      ? "text-blue-600"
+                      : "text-gray-600 hover:text-blue-600"
+                  }`}
+                  data-testid="nav-services"
+                >
+                  Services
+                  <ChevronDown className={`ml-1 h-4 w-4 transform transition-transform ${
+                    isServicesOpen ? 'rotate-180' : ''
+                  }`} />
+                </button>
+                <ServicesMegaMenu isOpen={isServicesOpen} onClose={handleCloseServices} />
+              </div>
+
+              {/* Other Navigation Items */}
               {navigation.map((item) => (
                 item.href.startsWith("#") ? (
                   <button
@@ -112,6 +142,22 @@ export default function Navigation() {
                   </Button>
                 </div>
                 <nav className="space-y-4">
+                  {/* Mobile Services Link */}
+                  <Link href="/services">
+                    <span
+                      onClick={() => setIsOpen(false)}
+                      className={`block py-2 text-base font-medium transition-colors cursor-pointer ${
+                        location.startsWith('/services')
+                          ? "text-blue-600"
+                          : "text-gray-600 hover:text-blue-600"
+                      }`}
+                      data-testid="mobile-nav-services"
+                    >
+                      Services
+                    </span>
+                  </Link>
+                  
+                  {/* Other Navigation Items */}
                   {navigation.map((item) => (
                     item.href.startsWith("#") ? (
                       <button
