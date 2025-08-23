@@ -11,7 +11,7 @@ import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import RichTextEditor from "@/components/RichTextEditor";
-import { ObjectUploader } from "@/components/ObjectUploader";
+import { SimpleFileUpload } from "@/components/SimpleFileUpload";
 import { Plus, Edit, Trash2, Star, Eye, EyeOff } from "lucide-react";
 
 export default function CaseStudyManager() {
@@ -133,39 +133,41 @@ export default function CaseStudyManager() {
     }
   };
 
-  const handleImageUpload = async () => {
+  const handleImageUpload = async (file: File) => {
     try {
+      // Get upload URL
       const response = await apiRequest("POST", "/api/objects/upload");
       const data = await response.json();
-      return { method: "PUT" as const, url: data.uploadURL };
-    } catch (error) {
-      toast({
-        title: "Error getting upload URL",
-        description: "Failed to prepare file upload",
-        variant: "destructive",
+      
+      // Upload file directly
+      const uploadResponse = await fetch(data.uploadURL, {
+        method: 'PUT',
+        body: file,
+        headers: {
+          'Content-Type': file.type
+        }
       });
-      throw error;
+      
+      if (uploadResponse.ok) {
+        // Extract clean URL without query parameters
+        const cleanUrl = data.uploadURL.split('?')[0];
+        setEditingItem({ ...editingItem, imageUrl: cleanUrl });
+        toast({ title: "Image uploaded successfully" });
+      } else {
+        throw new Error('Upload failed');
+      }
+    } catch (error) {
+      console.error("Error uploading image:", error);
+      toast({ 
+        title: "Upload failed", 
+        description: "Please try again",
+        variant: "destructive" 
+      });
     }
   };
 
-  const handleImageUploadComplete = async (result: any) => {
-    if (result.successful && result.successful.length > 0) {
-      const uploadedFile = result.successful[0];
-      try {
-        const response = await apiRequest("PUT", "/api/admin/images", {
-          imageURL: uploadedFile.uploadURL,
-        });
-        const data = await response.json();
-        setEditingItem({ ...editingItem, imageUrl: data.objectPath });
-        toast({ title: "Image uploaded successfully" });
-      } catch (error) {
-        toast({
-          title: "Error processing image",
-          description: "Failed to save image",
-          variant: "destructive",
-        });
-      }
-    }
+  const handleRemoveImage = () => {
+    setEditingItem({ ...editingItem, imageUrl: "" });
   };
 
   return (
@@ -289,27 +291,13 @@ export default function CaseStudyManager() {
 
                 <div>
                   <Label>Project Image</Label>
-                  <div className="mt-2" style={{ isolation: 'isolate' }}>
-                    <div 
-                      className="upload-container" 
-                      onClick={(e) => e.stopPropagation()}
-                      onKeyDown={(e) => e.stopPropagation()}
-                      style={{ pointerEvents: 'auto', isolation: 'isolate' }}
-                    >
-                      <ObjectUploader
-                        onGetUploadParameters={handleImageUpload}
-                        onComplete={handleImageUploadComplete}
-                        maxNumberOfFiles={1}
-                        maxFileSize={10 * 1024 * 1024} // 10MB
-                      >
-                        <span>Upload Project Image</span>
-                      </ObjectUploader>
-                    </div>
-                    {editingItem.imageUrl && (
-                      <div className="mt-2">
-                        <img src={editingItem.imageUrl} alt="Project preview" className="w-32 h-20 object-cover rounded border" />
-                      </div>
-                    )}
+                  <div className="mt-2">
+                    <SimpleFileUpload
+                      onFileSelect={handleImageUpload}
+                      currentUrl={editingItem.imageUrl}
+                      onRemove={handleRemoveImage}
+                      maxSize={10}
+                    />
                   </div>
                 </div>
 
