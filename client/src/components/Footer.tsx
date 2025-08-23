@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { Twitter, Linkedin, Github } from "lucide-react";
+import logoImage from "@assets/WhatsApp Image 2025-08-23 at 9.17.05 PM_1755962247143.jpeg";
 
 export default function Footer() {
   return (
@@ -8,7 +9,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="md:col-span-2">
-            <h3 className="text-2xl font-bold mb-4">Pi Tetris</h3>
+            <div className="flex items-center space-x-3 mb-4">
+              <img 
+                src={logoImage} 
+                alt="Pi Tetris Logo" 
+                className="h-10 w-auto object-contain filter brightness-0 invert"
+              />
+              <h3 className="text-2xl font-bold">Pi Tetris</h3>
+            </div>
             <p className="text-gray-300 mb-6 max-w-md">
               We design, build, and staff AI driven web, mobile and data solutions. 
               Your trusted partner for digital transformation.
@@ -44,37 +52,37 @@ export default function Footer() {
             <ul className="space-y-2 text-gray-300">
               <li>
                 <Link href="/services">
-                  <a className="hover:text-white transition-colors" data-testid="footer-link-ai-ml">
+                  <span className="hover:text-white transition-colors cursor-pointer" data-testid="footer-link-ai-ml">
                     AI & Machine Learning
-                  </a>
+                  </span>
                 </Link>
               </li>
               <li>
                 <Link href="/services">
-                  <a className="hover:text-white transition-colors" data-testid="footer-link-custom-software">
+                  <span className="hover:text-white transition-colors cursor-pointer" data-testid="footer-link-custom-software">
                     Custom Software
-                  </a>
+                  </span>
                 </Link>
               </li>
               <li>
                 <Link href="/services">
-                  <a className="hover:text-white transition-colors" data-testid="footer-link-mobile">
+                  <span className="hover:text-white transition-colors cursor-pointer" data-testid="footer-link-mobile">
                     Mobile Development
-                  </a>
+                  </span>
                 </Link>
               </li>
               <li>
                 <Link href="/services">
-                  <a className="hover:text-white transition-colors" data-testid="footer-link-data">
+                  <span className="hover:text-white transition-colors cursor-pointer" data-testid="footer-link-data">
                     Data Engineering
-                  </a>
+                  </span>
                 </Link>
               </li>
               <li>
                 <Link href="/services">
-                  <a className="hover:text-white transition-colors" data-testid="footer-link-staff">
+                  <span className="hover:text-white transition-colors cursor-pointer" data-testid="footer-link-staff">
                     Staff Augmentation
-                  </a>
+                  </span>
                 </Link>
               </li>
             </ul>
@@ -86,16 +94,16 @@ export default function Footer() {
             <ul className="space-y-2 text-gray-300">
               <li>
                 <Link href="/about">
-                  <a className="hover:text-white transition-colors" data-testid="footer-link-about">
+                  <span className="hover:text-white transition-colors cursor-pointer" data-testid="footer-link-about">
                     About Us
-                  </a>
+                  </span>
                 </Link>
               </li>
               <li>
                 <Link href="/portfolio">
-                  <a className="hover:text-white transition-colors" data-testid="footer-link-portfolio">
+                  <span className="hover:text-white transition-colors cursor-pointer" data-testid="footer-link-portfolio">
                     Portfolio
-                  </a>
+                  </span>
                 </Link>
               </li>
               <li>
@@ -105,9 +113,9 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/contact">
-                  <a className="hover:text-white transition-colors" data-testid="footer-link-contact">
+                  <span className="hover:text-white transition-colors cursor-pointer" data-testid="footer-link-contact">
                     Contact
-                  </a>
+                  </span>
                 </Link>
               </li>
             </ul>

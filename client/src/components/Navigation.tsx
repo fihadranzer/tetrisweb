@@ -3,6 +3,7 @@ import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, X } from "lucide-react";
+import logoImage from "@assets/WhatsApp Image 2025-08-23 at 9.17.05 PM_1755962247143.jpeg";
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -41,9 +42,14 @@ export default function Navigation() {
           {/* Logo */}
           <div className="flex items-center">
             <Link href="/">
-              <a className="text-2xl font-bold text-blue-600" data-testid="link-home">
-                Pi Tetris
-              </a>
+              <div className="flex items-center space-x-2" data-testid="link-home">
+                <img 
+                  src={logoImage} 
+                  alt="Pi Tetris Logo" 
+                  className="h-10 w-auto object-contain"
+                />
+                <span className="text-xl font-bold text-blue-600">Pi Tetris</span>
+              </div>
             </Link>
           </div>
 
@@ -62,8 +68,8 @@ export default function Navigation() {
                   </button>
                 ) : (
                   <Link key={item.name} href={item.href}>
-                    <a
-                      className={`px-3 py-2 text-sm font-medium transition-colors ${
+                    <span
+                      className={`px-3 py-2 text-sm font-medium transition-colors cursor-pointer ${
                         isActive(item.href)
                           ? "text-blue-600"
                           : "text-gray-600 hover:text-blue-600"
@@ -71,7 +77,7 @@ export default function Navigation() {
                       data-testid={`nav-${item.name.toLowerCase()}`}
                     >
                       {item.name}
-                    </a>
+                    </span>
                   </Link>
                 )
               ))}
@@ -93,7 +99,14 @@ export default function Navigation() {
               </SheetTrigger>
               <SheetContent side="right" className="w-80">
                 <div className="flex items-center justify-between mb-8">
-                  <h2 className="text-lg font-semibold">Menu</h2>
+                  <div className="flex items-center space-x-2">
+                    <img 
+                      src={logoImage} 
+                      alt="Pi Tetris Logo" 
+                      className="h-8 w-auto object-contain"
+                    />
+                    <span className="text-lg font-semibold">Pi Tetris</span>
+                  </div>
                   <Button variant="ghost" size="sm" onClick={() => setIsOpen(false)}>
                     <X className="h-5 w-5" />
                   </Button>
@@ -111,9 +124,9 @@ export default function Navigation() {
                       </button>
                     ) : (
                       <Link key={item.name} href={item.href}>
-                        <a
+                        <span
                           onClick={() => setIsOpen(false)}
-                          className={`block py-2 text-base font-medium transition-colors ${
+                          className={`block py-2 text-base font-medium transition-colors cursor-pointer ${
                             isActive(item.href)
                               ? "text-blue-600"
                               : "text-gray-600 hover:text-blue-600"
@@ -121,7 +134,7 @@ export default function Navigation() {
                           data-testid={`mobile-nav-${item.name.toLowerCase()}`}
                         >
                           {item.name}
-                        </a>
+                        </span>
                       </Link>
                     )
                   ))}
