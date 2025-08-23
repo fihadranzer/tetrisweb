@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import Layout from "@/components/Layout";
 import { Badge } from "@/components/ui/badge";
 
 const techCategories = [
@@ -17,14 +16,12 @@ export default function Technologies() {
 
   if (isLoading) {
     return (
-      <Layout>
-        <div className="min-h-screen flex items-center justify-center">
-          <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-pi-blue mx-auto mb-4"></div>
-            <p className="text-pi-gray" data-testid="text-loading">Loading technologies...</p>
-          </div>
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-pi-blue mx-auto mb-4"></div>
+          <p className="text-pi-gray" data-testid="text-loading">Loading technologies...</p>
         </div>
-      </Layout>
+      </div>
     );
   }
 
@@ -34,7 +31,7 @@ export default function Technologies() {
   }));
 
   return (
-    <Layout>
+    <>
       <div className="pt-20 pb-20 bg-gradient-pi-hero text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
@@ -58,9 +55,34 @@ export default function Technologies() {
                 </h3>
                 <div className="space-y-2">
                   {category.technologies.length === 0 ? (
-                    <p className="text-pi-gray text-sm" data-testid={`text-no-technologies-${category.key}`}>
-                      No technologies available
-                    </p>
+                    <div className="space-y-2">
+                      {/* Default technologies for each category when database is empty */}
+                      {category.key === 'frontend' && ['React', 'Vue.js', 'Angular', 'TypeScript'].map(tech => (
+                        <span key={tech} className="block text-pi-blue text-sm" data-testid={`text-technology-${tech.toLowerCase().replace(/\s+/g, '-')}`}>
+                          {tech}
+                        </span>
+                      ))}
+                      {category.key === 'backend' && ['Node.js', 'Python', 'Java', 'PostgreSQL'].map(tech => (
+                        <span key={tech} className="block text-pi-blue text-sm" data-testid={`text-technology-${tech.toLowerCase().replace(/\s+/g, '-')}`}>
+                          {tech}
+                        </span>
+                      ))}
+                      {category.key === 'ai-ml' && ['TensorFlow', 'PyTorch', 'Scikit-learn', 'OpenAI GPT'].map(tech => (
+                        <span key={tech} className="block text-pi-blue text-sm" data-testid={`text-technology-${tech.toLowerCase().replace(/\s+/g, '-')}`}>
+                          {tech}
+                        </span>
+                      ))}
+                      {category.key === 'data' && ['Apache Spark', 'Pandas', 'NumPy', 'Tableau'].map(tech => (
+                        <span key={tech} className="block text-pi-blue text-sm" data-testid={`text-technology-${tech.toLowerCase().replace(/\s+/g, '-')}`}>
+                          {tech}
+                        </span>
+                      ))}
+                      {category.key === 'devops' && ['Docker', 'Kubernetes', 'AWS', 'Jenkins'].map(tech => (
+                        <span key={tech} className="block text-pi-blue text-sm" data-testid={`text-technology-${tech.toLowerCase().replace(/\s+/g, '-')}`}>
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
                   ) : (
                     category.technologies.map((tech: any) => (
                       <div key={tech.id} data-testid={`technology-${tech.name.toLowerCase().replace(/\s+/g, '-')}`}>
@@ -102,8 +124,46 @@ export default function Technologies() {
           </div>
 
           {!technologies || (technologies as any[]).length === 0 ? (
-            <div className="text-center py-12">
-              <p className="text-pi-gray text-lg" data-testid="text-no-technologies">No technologies available at the moment.</p>
+            <div className="flex flex-wrap gap-3 justify-center">
+              {/* Default Technologies when database is empty */}
+              {[
+                { name: 'React', category: 'frontend' },
+                { name: 'Vue.js', category: 'frontend' },
+                { name: 'Angular', category: 'frontend' },
+                { name: 'TypeScript', category: 'frontend' },
+                { name: 'Next.js', category: 'frontend' },
+                { name: 'Node.js', category: 'backend' },
+                { name: 'Python', category: 'backend' },
+                { name: 'Java', category: 'backend' },
+                { name: 'PostgreSQL', category: 'backend' },
+                { name: 'MongoDB', category: 'backend' },
+                { name: 'Express.js', category: 'backend' },
+                { name: 'TensorFlow', category: 'ai-ml' },
+                { name: 'PyTorch', category: 'ai-ml' },
+                { name: 'Scikit-learn', category: 'ai-ml' },
+                { name: 'OpenAI GPT', category: 'ai-ml' },
+                { name: 'Apache Spark', category: 'data' },
+                { name: 'Pandas', category: 'data' },
+                { name: 'NumPy', category: 'data' },
+                { name: 'Tableau', category: 'data' },
+                { name: 'Docker', category: 'devops' },
+                { name: 'Kubernetes', category: 'devops' },
+                { name: 'AWS', category: 'devops' },
+                { name: 'Azure', category: 'devops' },
+                { name: 'Jenkins', category: 'devops' }
+              ].map((tech, index) => {
+                const category = techCategories.find(cat => cat.key === tech.category);
+                return (
+                  <Badge 
+                    key={index} 
+                    variant="secondary" 
+                    className={`text-sm px-3 py-1 ${category?.color || 'bg-gray-100 text-gray-800'}`}
+                    data-testid={`badge-technology-${tech.name.toLowerCase().replace(/\s+/g, '-')}`}
+                  >
+                    {tech.name}
+                  </Badge>
+                );
+              })}
             </div>
           ) : (
             <div className="flex flex-wrap gap-3 justify-center">
@@ -124,6 +184,6 @@ export default function Technologies() {
           )}
         </div>
       </section>
-    </Layout>
+    </>
   );
 }
