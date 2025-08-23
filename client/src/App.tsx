@@ -22,12 +22,27 @@ import CategoryManager from "@/pages/admin/CategoryManager";
 import Layout from "@/components/Layout";
 import AdminLayout from "@/components/AdminLayout";
 
+// Service Pages
+import DedicatedTeam from "@/pages/services/DedicatedTeam";
+import StaffAugmentation from "@/pages/services/StaffAugmentation";
+import AIMLDevelopment from "@/pages/services/AIMLDevelopment";
+import ERPCRMCMSDevelopment from "@/pages/services/ERPCRMCMSDevelopment";
+import CustomSoftwareDevelopment from "@/pages/services/CustomSoftwareDevelopment";
+
 function PublicRoutes() {
   return (
     <Layout>
       <Switch>
         <Route path="/" component={Home} />
         <Route path="/services" component={Services} />
+        
+        {/* Dedicated Service Pages */}
+        <Route path="/services/dedicated-team" component={DedicatedTeam} />
+        <Route path="/services/staff-augmentation" component={StaffAugmentation} />
+        <Route path="/services/ai-ml-development" component={AIMLDevelopment} />
+        <Route path="/services/erp-crm-cms-development" component={ERPCRMCMSDevelopment} />
+        <Route path="/services/custom-software-development" component={CustomSoftwareDevelopment} />
+        
         <Route path="/services/:slug" component={ServiceDetail} />
         <Route path="/portfolio" component={Portfolio} />
         <Route path="/case-studies/:slug" component={CaseStudyDetail} />

@@ -45,6 +45,17 @@ export default function Navigation() {
     setIsServicesOpen(false);
   };
 
+  const handleMouseEnterServices = () => {
+    setIsServicesOpen(true);
+  };
+
+  const handleMouseLeaveServices = () => {
+    // Add a small delay before closing to prevent accidental closes
+    setTimeout(() => {
+      setIsServicesOpen(false);
+    }, 150);
+  };
+
   return (
     <>
     <nav className="bg-white shadow-sm border-b border-gray-100 sticky top-0 z-50 relative">
@@ -70,8 +81,8 @@ export default function Navigation() {
               {/* Services Dropdown */}
               <div 
                 className="relative"
-                onMouseEnter={() => setIsServicesOpen(true)}
-                onMouseLeave={() => setIsServicesOpen(false)}
+                onMouseEnter={handleMouseEnterServices}
+                onMouseLeave={handleMouseLeaveServices}
               >
                 <button
                   onClick={handleServicesToggle}
