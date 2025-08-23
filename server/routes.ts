@@ -391,7 +391,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Case Studies
   app.post('/api/admin/case-studies', isAuthenticated, isAdmin, async (req, res) => {
     try {
-      const validatedData = insertCaseStudySchema.parse(req.body);
+      // Handle empty categoryId
+      const processedData = {
+        ...req.body,
+        categoryId: req.body.categoryId === '' ? null : req.body.categoryId
+      };
+      
+      const validatedData = insertCaseStudySchema.parse(processedData);
       const caseStudy = await storage.createCaseStudy(validatedData);
       res.status(201).json(caseStudy);
     } catch (error) {

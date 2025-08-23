@@ -25,7 +25,12 @@ export default function CaseStudyManager() {
   });
 
   const { data: categories = [] } = useQuery({
-    queryKey: ["/api/categories", { type: "case-study" }],
+    queryKey: ["/api/categories"],
+    queryFn: async () => {
+      const response = await fetch('/api/categories?type=case-study');
+      if (!response.ok) throw new Error('Failed to fetch categories');
+      return response.json();
+    },
   });
 
   const createMutation = useMutation({
@@ -112,6 +117,7 @@ export default function CaseStudyManager() {
     // Parse technologies and tags from comma-separated strings
     const processedData = {
       ...editingItem,
+      categoryId: editingItem.categoryId === '' ? null : editingItem.categoryId,
       technologies: typeof editingItem.technologies === 'string' 
         ? editingItem.technologies.split(',').map((t: string) => t.trim()).filter(Boolean)
         : editingItem.technologies || [],

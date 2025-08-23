@@ -221,6 +221,8 @@ export const insertCaseStudySchema = createInsertSchema(caseStudies).omit({
   id: true,
   createdAt: true,
   updatedAt: true,
+}).extend({
+  categoryId: z.string().uuid().optional().nullable(),
 });
 
 export const insertTeamMemberSchema = createInsertSchema(teamMembers).omit({
