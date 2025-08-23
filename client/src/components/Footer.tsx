@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { Twitter, Linkedin, Github } from "lucide-react";
-import logoImage from "@assets/WhatsApp Image 2025-08-23 at 9.17.05 PM_1755962247143.jpeg";
+import logoWhite from "../assets/logo-white.svg";
 
 export default function Footer() {
   return (
@@ -11,9 +11,9 @@ export default function Footer() {
           <div className="md:col-span-2">
             <div className="flex items-center space-x-3 mb-4">
               <img 
-                src={logoImage} 
+                src={logoWhite} 
                 alt="Pi Tetris Logo" 
-                className="h-10 w-auto object-contain filter brightness-0 invert"
+                className="h-10 w-10 object-contain"
               />
               <h3 className="text-2xl font-bold">Pi Tetris</h3>
             </div>

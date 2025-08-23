@@ -3,7 +3,7 @@ import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, X, ChevronDown } from "lucide-react";
-import logoImage from "@assets/WhatsApp Image 2025-08-23 at 9.17.05 PM_1755962247143.jpeg";
+import logoImage from "../assets/logo.svg";
 import ServicesMegaMenu from "@/components/ServicesMegaMenu";
 
 export default function Navigation() {
@@ -65,7 +65,7 @@ export default function Navigation() {
                 <img 
                   src={logoImage} 
                   alt="Pi Tetris Logo" 
-                  className="h-10 w-auto object-contain"
+                  className="h-10 w-10 object-contain"
                 />
                 <span className="text-xl font-bold text-blue-600">Pi Tetris</span>
               </div>
@@ -142,7 +142,7 @@ export default function Navigation() {
                     <img 
                       src={logoImage} 
                       alt="Pi Tetris Logo" 
-                      className="h-8 w-auto object-contain"
+                      className="h-8 w-8 object-contain"
                     />
                     <span className="text-lg font-semibold">Pi Tetris</span>
                   </div>
