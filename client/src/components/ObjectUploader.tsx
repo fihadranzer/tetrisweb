@@ -76,9 +76,20 @@ export function ObjectUploader({
       })
   );
 
+  const handleButtonClick = (e: React.MouseEvent) => {
+    // Stop propagation to prevent interfering with form events
+    e.stopPropagation();
+    setShowModal(true);
+  };
+
   return (
     <div>
-      <Button onClick={() => setShowModal(true)} className={buttonClassName}>
+      <Button 
+        type="button"
+        onClick={handleButtonClick}
+        className={buttonClassName}
+        tabIndex={-1} // Remove from tab order to prevent accidental focus
+      >
         {children}
       </Button>
 
