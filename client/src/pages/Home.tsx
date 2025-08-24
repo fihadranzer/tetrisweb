@@ -88,7 +88,7 @@ export default function Home() {
           >
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Custom Software Development Solutions Expertise</h2>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto">
-              At Pi Tetris, we master the frameworks and technologies that power modern solutions. With our deep domain expertise, we help you modernize, innovate, and maintain your critical software applications.
+              At Pi Tetris, we master the frameworks and technologies that power modern solutions. With our deep domain expertise, we help you modernize, innovate, and maintain your critical software applications. We deliver consistent results regardless of the software development challenge.
             </p>
           </motion.div>
           
@@ -309,6 +309,178 @@ export default function Home() {
               <div className="text-4xl font-bold mb-2">350+</div>
               <div className="text-blue-100">Projects</div>
               <div className="text-sm text-blue-200 mt-1">Successfully delivered</div>
+            </motion.div>
+          </motion.div>
+          
+          {/* Awards and Recognition */}
+          <motion.div 
+            className="mt-20 bg-white rounded-2xl p-12 shadow-lg"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <div className="text-center mb-12">
+              <h3 className="text-3xl font-bold text-white mb-4">Awards and Recognition</h3>
+              <p className="text-xl text-blue-100 mb-8">Industry recognition for our exceptional software development expertise</p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <motion.div
+                className="text-center p-6 bg-blue-500/20 rounded-lg backdrop-blur-sm"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                viewport={{ once: true }}
+              >
+                <div className="w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Award className="w-8 h-8 text-yellow-800" />
+                </div>
+                <h4 className="font-semibold text-white mb-2">Top AI Developer 2024</h4>
+                <p className="text-blue-200">Clutch</p>
+              </motion.div>
+              
+              <motion.div
+                className="text-center p-6 bg-blue-500/20 rounded-lg backdrop-blur-sm"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                viewport={{ once: true }}
+              >
+                <div className="w-16 h-16 bg-blue-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Star className="w-8 h-8 text-white" />
+                </div>
+                <h4 className="font-semibold text-white mb-2">Top Software Developer 2024</h4>
+                <p className="text-blue-200">DesignRush</p>
+              </motion.div>
+              
+              <motion.div
+                className="text-center p-6 bg-blue-500/20 rounded-lg backdrop-blur-sm"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                viewport={{ once: true }}
+              >
+                <div className="w-16 h-16 bg-green-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <TrendingUp className="w-8 h-8 text-white" />
+                </div>
+                <h4 className="font-semibold text-white mb-2">Innovation Company of 2024</h4>
+                <p className="text-blue-200">TechBehemoths</p>
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+      
+      {/* A Few of Our Clients */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">A Few of Our Clients</h2>
+            <p className="text-xl text-gray-600">A selection of our custom software development services customers.</p>
+          </motion.div>
+          
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <motion.div
+              className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              viewport={{ once: true }}
+            >
+              <div className="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                <span className="text-blue-600 font-bold text-lg">AI</span>
+              </div>
+              <h3 className="font-semibold text-gray-900 mb-2">Fortune 500 Tech Company</h3>
+              <p className="text-gray-600 text-sm mb-4">Developed Generative AI Voice Assistant for Gaming. Built Standalone AI model (NLP)</p>
+              <span className="text-blue-600 text-sm font-medium">AI/ML Development</span>
+            </motion.div>
+            
+            <motion.div
+              className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              <div className="w-16 h-16 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                <span className="text-green-600 font-bold text-lg">WEB</span>
+              </div>
+              <h3 className="font-semibold text-gray-900 mb-2">Healthcare Technology Leader</h3>
+              <p className="text-gray-600 text-sm mb-4">Designed, Developed, and Deployed Automated Knowledge Discovery Engine</p>
+              <span className="text-green-600 text-sm font-medium">Web Application Development</span>
+            </motion.div>
+            
+            <motion.div
+              className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
+              <div className="w-16 h-16 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                <span className="text-purple-600 font-bold text-lg">DATA</span>
+              </div>
+              <h3 className="font-semibold text-gray-900 mb-2">Global Media Company</h3>
+              <p className="text-gray-600 text-sm mb-4">Designed and Developed Semantic Search Using GPT-2.0</p>
+              <span className="text-purple-600 text-sm font-medium">Data Engineering</span>
+            </motion.div>
+            
+            <motion.div
+              className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
+              <div className="w-16 h-16 bg-orange-100 rounded-lg flex items-center justify-center mb-4">
+                <span className="text-orange-600 font-bold text-lg">OPS</span>
+              </div>
+              <h3 className="font-semibold text-gray-900 mb-2">Gaming Industry Pioneer</h3>
+              <p className="text-gray-600 text-sm mb-4">Designed and Developed LiveOps and Customer Care Solution</p>
+              <span className="text-orange-600 text-sm font-medium">DevOps & Cloud</span>
+            </motion.div>
+            
+            <motion.div
+              className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              viewport={{ once: true }}
+            >
+              <div className="w-16 h-16 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                <span className="text-red-600 font-bold text-lg">AI</span>
+              </div>
+              <h3 className="font-semibold text-gray-900 mb-2">Energy Sector Leader</h3>
+              <p className="text-gray-600 text-sm mb-4">Designed Developed AI Based Operational Management Platform</p>
+              <span className="text-red-600 text-sm font-medium">AI/ML Development</span>
+            </motion.div>
+            
+            <motion.div
+              className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <div className="w-16 h-16 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
+                <span className="text-indigo-600 font-bold text-lg">CV</span>
+              </div>
+              <h3 className="font-semibold text-gray-900 mb-2">Manufacturing Giant</h3>
+              <p className="text-gray-600 text-sm mb-4">Data Engineering. Custom Development. Computer Vision: Super Resolution</p>
+              <span className="text-indigo-600 text-sm font-medium">Computer Vision</span>
             </motion.div>
           </motion.div>
         </div>
