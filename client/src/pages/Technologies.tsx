@@ -48,7 +48,7 @@ const techCategories = [
     color: 'bg-orange-100 text-orange-800',
     darkColor: 'dark:bg-orange-900 dark:text-orange-100',
     icon: BarChart,
-    description: 'Data processing, analysis, and visualization'
+    description: 'Modern data pipelines, real-time analytics, and scalable data infrastructure solutions'
   },
   { 
     key: 'devops', 

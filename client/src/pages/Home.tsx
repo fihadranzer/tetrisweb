@@ -494,7 +494,7 @@ export default function Home() {
                 <span className="text-white font-bold text-xl">DATA</span>
               </div>
               <h3 className="font-bold text-gray-900 mb-3 text-lg">Global Media Company</h3>
-              <p className="text-gray-600 mb-6 leading-relaxed">Designed and Developed Semantic Search Using GPT-2.0 with intelligent content discovery and personalization features.</p>
+              <p className="text-gray-600 mb-6 leading-relaxed">Built scalable real-time data pipelines processing millions of events daily with advanced analytics and machine learning integration for content personalization and recommendation systems.</p>
               <div className="flex items-center justify-between">
                 <span className="px-3 py-1 bg-purple-100 text-purple-700 text-sm font-semibold rounded-full">Data Engineering</span>
                 <ArrowRight className="w-5 h-5 text-purple-500" />
