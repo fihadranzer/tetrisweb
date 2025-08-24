@@ -29,6 +29,7 @@ import StaffAugmentation from "@/pages/services/StaffAugmentation";
 import AIMLDevelopment from "@/pages/services/AIMLDevelopment";
 import ERPCRMCMSDevelopment from "@/pages/services/ERPCRMCMSDevelopment";
 import CustomSoftwareDevelopment from "@/pages/services/CustomSoftwareDevelopment";
+import DataEngineering from "@/pages/services/DataEngineering";
 
 function PublicRoutes() {
   return (
@@ -43,6 +44,7 @@ function PublicRoutes() {
         <Route path="/services/ai-ml-development" component={AIMLDevelopment} />
         <Route path="/services/erp-crm-cms-development" component={ERPCRMCMSDevelopment} />
         <Route path="/services/custom-software-development" component={CustomSoftwareDevelopment} />
+        <Route path="/services/data-engineering" component={DataEngineering} />
         
         <Route path="/services/:slug" component={ServiceDetail} />
         <Route path="/portfolio" component={Portfolio} />
