@@ -34,6 +34,8 @@ import MobileAppDevelopment from "@/pages/services/MobileAppDevelopment";
 import DevOpsCloud from "@/pages/services/DevOpsCloud";
 import ChatbotDevelopment from "@/pages/services/ChatbotDevelopment";
 import ProjectDelivery from "@/pages/services/ProjectDelivery";
+import VirtualCTO from "@/pages/services/VirtualCTO";
+import EnterpriseSearch from "@/pages/services/EnterpriseSearch";
 
 function PublicRoutes() {
   return (
@@ -58,6 +60,8 @@ function PublicRoutes() {
         <Route path="/services/chatbot-development" component={ChatbotDevelopment} />
         <Route path="/services/chatbots" component={ChatbotDevelopment} />
         <Route path="/services/project-delivery" component={ProjectDelivery} />
+        <Route path="/services/virtual-cto" component={VirtualCTO} />
+        <Route path="/services/enterprise-search" component={EnterpriseSearch} />
         
         <Route path="/services/:slug" component={ServiceDetail} />
         <Route path="/portfolio" component={Portfolio} />

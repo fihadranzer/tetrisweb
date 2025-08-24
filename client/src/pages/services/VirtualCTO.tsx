@@ -1,15 +1,15 @@
-import { ArrowRight, Users, Zap, Shield, Globe, CheckCircle, Clock, Target, Code, Database, Settings } from "lucide-react";
+import { ArrowRight, Users, Zap, Shield, Globe, CheckCircle, Brain, Target, Code, Settings, TrendingUp, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 
-export default function DedicatedTeam() {
+export default function VirtualCTO() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-purple-600 via-purple-700 to-indigo-800 text-white py-20">
+      <section className="bg-gradient-to-br from-teal-600 via-teal-700 to-cyan-800 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             className="text-center"
@@ -19,22 +19,22 @@ export default function DedicatedTeam() {
           >
             <div className="flex justify-center mb-6">
               <div className="w-20 h-20 bg-white/20 rounded-2xl flex items-center justify-center backdrop-blur-sm">
-                <Users className="w-10 h-10" />
+                <Brain className="w-10 h-10" />
               </div>
             </div>
-            <h1 className="text-5xl font-bold mb-6">Dedicated Development Teams</h1>
-            <p className="text-xl text-purple-100 max-w-4xl mx-auto leading-relaxed mb-8">
-              Scale your development capacity with a full-time dedicated team that works exclusively on your projects. Get experienced developers, project managers, and quality assurance specialists as an extension of your in-house team.
+            <h1 className="text-5xl font-bold mb-6">Virtual CTO Services</h1>
+            <p className="text-xl text-teal-100 max-w-4xl mx-auto leading-relaxed mb-8">
+              Get executive-level technology leadership and strategic guidance without the full-time commitment. Our experienced CTOs help drive your technology vision, architecture decisions, and team development.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact">
-                <Button className="bg-white text-purple-700 hover:bg-gray-100 px-8 py-3 text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300" data-testid="button-build-team">
-                  Build Your Team
+                <Button className="bg-white text-teal-700 hover:bg-gray-100 px-8 py-3 text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300" data-testid="button-get-cto">
+                  Get Your Virtual CTO
                 </Button>
               </Link>
               <Link href="/portfolio">
-                <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-purple-700 px-8 py-3 text-lg font-semibold rounded-lg transition-all duration-300" data-testid="button-view-success">
-                  View Success Stories
+                <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-teal-700 px-8 py-3 text-lg font-semibold rounded-lg transition-all duration-300" data-testid="button-view-experience">
+                  View Our Experience
                 </Button>
               </Link>
             </div>
@@ -52,9 +52,9 @@ export default function DedicatedTeam() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">Comprehensive Team Solutions</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-6">Comprehensive Technology Leadership</h2>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              From single developers to complete cross-functional teams, we provide skilled professionals who integrate seamlessly with your workflow and business objectives.
+              From technology strategy to team leadership, our Virtual CTOs provide the expertise and guidance needed to drive your technology initiatives and scale your business.
             </p>
           </motion.div>
 
@@ -68,26 +68,26 @@ export default function DedicatedTeam() {
               <Card className="h-full hover:shadow-lg transition-shadow border-l-4 border-blue-500">
                 <CardHeader>
                   <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-4">
-                    <Code className="w-8 h-8 text-white" />
+                    <Target className="w-8 h-8 text-white" />
                   </div>
-                  <CardTitle className="text-xl">Full-Stack Development Teams</CardTitle>
+                  <CardTitle className="text-xl">Technology Strategy & Roadmap</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600 mb-4">
-                    Complete development teams with frontend, backend, and mobile specialists working together to deliver end-to-end solutions for your project.
+                    Develop comprehensive technology strategies aligned with business goals, create detailed roadmaps, and ensure technology investments drive measurable outcomes.
                   </p>
                   <div className="space-y-2">
                     <div className="flex items-center text-sm text-gray-700">
                       <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                      Senior & mid-level developers
+                      Strategic technology planning
                     </div>
                     <div className="flex items-center text-sm text-gray-700">
                       <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                      Full-time commitment (40+ hrs/week)
+                      Business-technology alignment
                     </div>
                     <div className="flex items-center text-sm text-gray-700">
                       <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                      Cross-functional expertise
+                      ROI optimization strategies
                     </div>
                   </div>
                 </CardContent>
@@ -103,26 +103,26 @@ export default function DedicatedTeam() {
               <Card className="h-full hover:shadow-lg transition-shadow border-l-4 border-green-500">
                 <CardHeader>
                   <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center mb-4">
-                    <Target className="w-8 h-8 text-white" />
+                    <Code className="w-8 h-8 text-white" />
                   </div>
-                  <CardTitle className="text-xl">Project Management & Delivery</CardTitle>
+                  <CardTitle className="text-xl">Technical Architecture & Design</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600 mb-4">
-                    Dedicated project managers and Scrum masters ensure smooth project execution with agile methodologies and transparent communication.
+                    Design scalable, secure, and maintainable system architectures that support current needs and future growth with best practices and industry standards.
                   </p>
                   <div className="space-y-2">
                     <div className="flex items-center text-sm text-gray-700">
                       <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                      Certified Scrum Masters
+                      System architecture design
                     </div>
                     <div className="flex items-center text-sm text-gray-700">
                       <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                      Agile development practices
+                      Microservices & cloud architecture
                     </div>
                     <div className="flex items-center text-sm text-gray-700">
                       <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                      Regular sprint reviews & demos
+                      Security & compliance frameworks
                     </div>
                   </div>
                 </CardContent>
@@ -138,26 +138,26 @@ export default function DedicatedTeam() {
               <Card className="h-full hover:shadow-lg transition-shadow border-l-4 border-purple-500">
                 <CardHeader>
                   <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mb-4">
-                    <Shield className="w-8 h-8 text-white" />
+                    <Users className="w-8 h-8 text-white" />
                   </div>
-                  <CardTitle className="text-xl">Quality Assurance & Testing</CardTitle>
+                  <CardTitle className="text-xl">Team Leadership & Development</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600 mb-4">
-                    Comprehensive QA teams with automated testing specialists, manual testers, and performance engineers ensuring high-quality deliverables.
+                    Build and lead high-performing development teams with clear career paths, mentoring programs, and performance management systems.
                   </p>
                   <div className="space-y-2">
                     <div className="flex items-center text-sm text-gray-700">
                       <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                      Automated testing frameworks
+                      Team structure & hiring guidance
                     </div>
                     <div className="flex items-center text-sm text-gray-700">
                       <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                      Manual & exploratory testing
+                      Career development programs
                     </div>
                     <div className="flex items-center text-sm text-gray-700">
                       <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                      Performance & security testing
+                      Performance optimization
                     </div>
                   </div>
                 </CardContent>
@@ -175,24 +175,24 @@ export default function DedicatedTeam() {
                   <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mb-4">
                     <Settings className="w-8 h-8 text-white" />
                   </div>
-                  <CardTitle className="text-xl">DevOps & Infrastructure</CardTitle>
+                  <CardTitle className="text-xl">Process Optimization & DevOps</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600 mb-4">
-                    DevOps specialists and cloud architects to set up CI/CD pipelines, infrastructure automation, and deployment strategies for scalable solutions.
+                    Implement efficient development processes, CI/CD pipelines, and DevOps practices to accelerate delivery and improve software quality.
                   </p>
                   <div className="space-y-2">
                     <div className="flex items-center text-sm text-gray-700">
                       <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                      CI/CD pipeline setup
+                      Agile & DevOps implementation
                     </div>
                     <div className="flex items-center text-sm text-gray-700">
                       <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                      Cloud infrastructure management
+                      CI/CD pipeline optimization
                     </div>
                     <div className="flex items-center text-sm text-gray-700">
                       <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                      Monitoring & alerting setup
+                      Quality assurance frameworks
                     </div>
                   </div>
                 </CardContent>
@@ -208,26 +208,26 @@ export default function DedicatedTeam() {
               <Card className="h-full hover:shadow-lg transition-shadow border-l-4 border-red-500">
                 <CardHeader>
                   <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center mb-4">
-                    <Zap className="w-8 h-8 text-white" />
+                    <Shield className="w-8 h-8 text-white" />
                   </div>
-                  <CardTitle className="text-xl">Rapid Team Scaling</CardTitle>
+                  <CardTitle className="text-xl">Digital Transformation</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600 mb-4">
-                    Scale your team up or down based on project phases and requirements without the overhead of recruitment, onboarding, and HR management.
+                    Lead digital transformation initiatives, modernize legacy systems, and implement new technologies to drive business innovation and competitiveness.
                   </p>
                   <div className="space-y-2">
                     <div className="flex items-center text-sm text-gray-700">
                       <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                      Flexible team composition
+                      Legacy system modernization
                     </div>
                     <div className="flex items-center text-sm text-gray-700">
                       <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                      Quick onboarding (1-2 weeks)
+                      Cloud migration strategies
                     </div>
                     <div className="flex items-center text-sm text-gray-700">
                       <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                      No recruitment overhead
+                      Technology adoption roadmaps
                     </div>
                   </div>
                 </CardContent>
@@ -243,26 +243,26 @@ export default function DedicatedTeam() {
               <Card className="h-full hover:shadow-lg transition-shadow border-l-4 border-indigo-500">
                 <CardHeader>
                   <div className="w-16 h-16 bg-gradient-to-br from-indigo-500 to-indigo-600 rounded-xl flex items-center justify-center mb-4">
-                    <Database className="w-8 h-8 text-white" />
+                    <TrendingUp className="w-8 h-8 text-white" />
                   </div>
-                  <CardTitle className="text-xl">Specialized Expertise</CardTitle>
+                  <CardTitle className="text-xl">Technology Due Diligence</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="text-gray-600 mb-4">
-                    Access specialized skills including AI/ML engineers, blockchain developers, data scientists, and architecture specialists for complex projects.
+                    Provide comprehensive technology assessments for investments, mergers, acquisitions, and strategic partnerships with detailed risk analysis.
                   </p>
                   <div className="space-y-2">
                     <div className="flex items-center text-sm text-gray-700">
                       <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                      AI/ML & data science experts
+                      Technology stack assessment
                     </div>
                     <div className="flex items-center text-sm text-gray-700">
                       <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                      Solution architects
+                      Risk & security evaluation
                     </div>
                     <div className="flex items-center text-sm text-gray-700">
                       <CheckCircle className="w-4 h-4 text-green-500 mr-2" />
-                      Industry-specific knowledge
+                      Scalability & performance analysis
                     </div>
                   </div>
                 </CardContent>
@@ -272,7 +272,7 @@ export default function DedicatedTeam() {
         </div>
       </section>
 
-      {/* Key Advantages */}
+      {/* CTO Expertise Levels */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
@@ -282,9 +282,9 @@ export default function DedicatedTeam() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">Why Choose Dedicated Teams?</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-6">Our Virtual CTO Expertise</h2>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              Get the benefits of an extended in-house team without the overhead and complexity of direct hiring.
+              Our CTOs bring decades of experience across industries and technologies to guide your strategic decisions.
             </p>
           </motion.div>
 
@@ -297,10 +297,10 @@ export default function DedicatedTeam() {
               className="text-center"
             >
               <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Clock className="w-8 h-8 text-white" />
+                <Award className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">60% Cost Savings</h3>
-              <p className="text-gray-600">Reduce development costs compared to local hiring while maintaining high quality standards.</p>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">20+ Years Experience</h3>
+              <p className="text-gray-600">Senior technology leaders with extensive experience in building and scaling technology organizations.</p>
             </motion.div>
 
             <motion.div
@@ -311,10 +311,10 @@ export default function DedicatedTeam() {
               className="text-center"
             >
               <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Zap className="w-8 h-8 text-white" />
+                <Globe className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">2-Week Setup</h3>
-              <p className="text-gray-600">Quick team assembly and onboarding to start your project without delays.</p>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">Multi-Industry Focus</h3>
+              <p className="text-gray-600">Experience across fintech, healthcare, e-commerce, SaaS, and enterprise software domains.</p>
             </motion.div>
 
             <motion.div
@@ -325,10 +325,10 @@ export default function DedicatedTeam() {
               className="text-center"
             >
               <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Shield className="w-8 h-8 text-white" />
+                <Zap className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">95% Retention Rate</h3>
-              <p className="text-gray-600">High client satisfaction with dedicated teams that become true partners in your success.</p>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">Startup to Enterprise</h3>
+              <p className="text-gray-600">Proven track record with startups, scale-ups, and Fortune 500 companies across different growth stages.</p>
             </motion.div>
 
             <motion.div
@@ -339,10 +339,10 @@ export default function DedicatedTeam() {
               className="text-center"
             >
               <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Globe className="w-8 h-8 text-white" />
+                <Target className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">24/7 Coverage</h3>
-              <p className="text-gray-600">Global talent pool ensuring round-the-clock development and support coverage.</p>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">Results Driven</h3>
+              <p className="text-gray-600">Focus on measurable outcomes including improved efficiency, cost reduction, and revenue growth.</p>
             </motion.div>
           </div>
         </div>
@@ -358,9 +358,9 @@ export default function DedicatedTeam() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">Flexible Engagement Models</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-6">Flexible CTO Engagement Models</h2>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              Choose the engagement model that best fits your project requirements and budget.
+              Choose the level of CTO involvement that matches your current needs and growth stage.
             </p>
           </motion.div>
 
@@ -371,36 +371,33 @@ export default function DedicatedTeam() {
               transition={{ duration: 0.5, delay: 0.1 }}
               viewport={{ once: true }}
             >
-              <Card className="h-full border-2 border-purple-200 relative hover:shadow-lg transition-shadow">
-                <div className="absolute -top-3 left-6">
-                  <Badge className="bg-purple-600 text-white">Most Popular</Badge>
-                </div>
+              <Card className="h-full hover:shadow-lg transition-shadow">
                 <CardHeader className="text-center">
-                  <CardTitle className="text-2xl">Dedicated Team</CardTitle>
-                  <div className="text-4xl font-bold text-purple-600 mt-4">$3,500<span className="text-lg text-gray-500">/month</span></div>
-                  <p className="text-gray-600">Per developer</p>
+                  <CardTitle className="text-2xl">Strategic Advisory</CardTitle>
+                  <div className="text-4xl font-bold text-teal-600 mt-4">$5,000<span className="text-lg text-gray-500">/month</span></div>
+                  <p className="text-gray-600">10-15 hours monthly</p>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-3">
                     <li className="flex items-center">
                       <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
-                      <span>Full-time dedicated developer</span>
+                      <span>Monthly strategy sessions</span>
                     </li>
                     <li className="flex items-center">
                       <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
-                      <span>40+ hours per week commitment</span>
+                      <span>Technology roadmap development</span>
                     </li>
                     <li className="flex items-center">
                       <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
-                      <span>Project management included</span>
+                      <span>Architecture reviews</span>
                     </li>
                     <li className="flex items-center">
                       <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
-                      <span>Quality assurance & testing</span>
+                      <span>Executive reporting</span>
                     </li>
                     <li className="flex items-center">
                       <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
-                      <span>Direct team communication</span>
+                      <span>On-demand consultation</span>
                     </li>
                   </ul>
                 </CardContent>
@@ -413,33 +410,36 @@ export default function DedicatedTeam() {
               transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              <Card className="h-full hover:shadow-lg transition-shadow">
+              <Card className="h-full border-2 border-teal-200 relative hover:shadow-lg transition-shadow">
+                <div className="absolute -top-3 left-6">
+                  <Badge className="bg-teal-600 text-white">Most Popular</Badge>
+                </div>
                 <CardHeader className="text-center">
-                  <CardTitle className="text-2xl">Scalable Team</CardTitle>
-                  <div className="text-4xl font-bold text-gray-900 mt-4">$3,200<span className="text-lg text-gray-500">/month</span></div>
-                  <p className="text-gray-600">Per developer (5+ team)</p>
+                  <CardTitle className="text-2xl">Part-Time CTO</CardTitle>
+                  <div className="text-4xl font-bold text-teal-600 mt-4">$12,000<span className="text-lg text-gray-500">/month</span></div>
+                  <p className="text-gray-600">20-30 hours weekly</p>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-3">
                     <li className="flex items-center">
                       <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
-                      <span>Team of 5+ developers</span>
+                      <span>Regular team leadership</span>
                     </li>
                     <li className="flex items-center">
                       <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
-                      <span>Flexible scaling up/down</span>
+                      <span>Hands-on architecture work</span>
                     </li>
                     <li className="flex items-center">
                       <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
-                      <span>Technical lead included</span>
+                      <span>Process implementation</span>
                     </li>
                     <li className="flex items-center">
                       <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
-                      <span>Architecture guidance</span>
+                      <span>Team hiring & development</span>
                     </li>
                     <li className="flex items-center">
                       <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
-                      <span>Cross-functional expertise</span>
+                      <span>Weekly progress reviews</span>
                     </li>
                   </ul>
                 </CardContent>
@@ -454,31 +454,31 @@ export default function DedicatedTeam() {
             >
               <Card className="h-full hover:shadow-lg transition-shadow">
                 <CardHeader className="text-center">
-                  <CardTitle className="text-2xl">Enterprise</CardTitle>
-                  <div className="text-4xl font-bold text-gray-900 mt-4">Custom</div>
-                  <p className="text-gray-600">Tailored solution</p>
+                  <CardTitle className="text-2xl">Full-Time CTO</CardTitle>
+                  <div className="text-4xl font-bold text-gray-900 mt-4">$18,000<span className="text-lg text-gray-500">/month</span></div>
+                  <p className="text-gray-600">Full-time commitment</p>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-3">
                     <li className="flex items-center">
                       <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
-                      <span>Large teams (10+ developers)</span>
+                      <span>Complete technology leadership</span>
                     </li>
                     <li className="flex items-center">
                       <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
-                      <span>Multiple technology stacks</span>
+                      <span>Daily team management</span>
                     </li>
                     <li className="flex items-center">
                       <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
-                      <span>Custom SLAs & processes</span>
+                      <span>Strategic planning & execution</span>
                     </li>
                     <li className="flex items-center">
                       <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
-                      <span>24/7 dedicated support</span>
+                      <span>Board-level reporting</span>
                     </li>
                     <li className="flex items-center">
                       <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
-                      <span>On-site team options</span>
+                      <span>Complete organizational oversight</span>
                     </li>
                   </ul>
                 </CardContent>
@@ -489,7 +489,7 @@ export default function DedicatedTeam() {
       </section>
 
       {/* Call to Action */}
-      <section className="py-20 bg-gradient-to-br from-purple-600 to-indigo-800 text-white">
+      <section className="py-20 bg-gradient-to-br from-teal-600 to-cyan-800 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -497,18 +497,18 @@ export default function DedicatedTeam() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl font-bold mb-6">Ready to Scale Your Development Team?</h2>
-            <p className="text-xl text-purple-100 max-w-4xl mx-auto mb-8 leading-relaxed">
-              Get a dedicated team of experienced developers, project managers, and specialists who work exclusively on your projects and become an extension of your business.
+            <h2 className="text-4xl font-bold mb-6">Ready for Strategic Technology Leadership?</h2>
+            <p className="text-xl text-teal-100 max-w-4xl mx-auto mb-8 leading-relaxed">
+              Partner with our experienced Virtual CTOs to accelerate your technology initiatives, optimize your development processes, and drive strategic growth.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact">
-                <Button className="bg-white text-purple-700 hover:bg-gray-100 px-8 py-3 text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300" data-testid="button-start-building">
-                  Start Building Your Team
+                <Button className="bg-white text-teal-700 hover:bg-gray-100 px-8 py-3 text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300" data-testid="button-schedule-consultation">
+                  Schedule a Consultation
                 </Button>
               </Link>
               <Link href="/portfolio">
-                <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-purple-700 px-8 py-3 text-lg font-semibold rounded-lg transition-all duration-300" data-testid="button-view-case-studies">
+                <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-teal-700 px-8 py-3 text-lg font-semibold rounded-lg transition-all duration-300" data-testid="button-view-case-studies">
                   View Case Studies
                 </Button>
               </Link>
