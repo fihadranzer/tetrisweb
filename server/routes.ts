@@ -1,7 +1,12 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { setupAuth, isAuthenticated } from "./replitAuth";
+// Use local auth for development, Replit auth for production
+const authModule = process.env.NODE_ENV === 'development' 
+  ? await import("./localAuth")
+  : await import("./replitAuth");
+
+const { setupAuth, isAuthenticated } = authModule;
 import { ObjectStorageService, ObjectNotFoundError } from "./objectStorage";
 import { ObjectPermission } from "./objectAcl";
 import {
