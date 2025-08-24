@@ -86,13 +86,13 @@ export default function ServiceDetail() {
               
               <div className="flex flex-wrap gap-4">
                 <Link href="/contact">
-                  <Button size="lg" className="bg-white text-blue-900 hover:bg-blue-50" data-testid="button-get-started">
+                  <Button size="lg" className="bg-white text-blue-900 hover:bg-blue-50 font-semibold" data-testid="button-get-started">
                     Get Started
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
                 </Link>
                 <Link href="/portfolio">
-                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-900" data-testid="button-view-work">
+                  <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-blue-900 bg-transparent font-semibold" data-testid="button-view-work">
                     View Our Work
                   </Button>
                 </Link>
