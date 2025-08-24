@@ -25,35 +25,81 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Auth middleware
   await setupAuth(app);
 
-  // Direct Admin Login Route (bypassed in development mode)
+  // Create admin user if doesn't exist
+  try {
+    const adminEmail = 'admin@pitetris.com';
+    let adminUser = await storage.getUserByEmail(adminEmail);
+    
+    if (!adminUser) {
+      console.log('Creating admin user...');
+      adminUser = await storage.upsertUser({
+        email: adminEmail,
+        firstName: 'Admin',
+        lastName: 'User',
+        isAdmin: true,
+        adminPassword: 'admin123'
+      });
+      console.log('✅ Admin user created: admin@pitetris.com / admin123');
+    } else if (!adminUser.isAdmin) {
+      // Update existing user to be admin
+      adminUser = await storage.upsertUser({
+        ...adminUser,
+        isAdmin: true,
+        adminPassword: 'admin123'
+      });
+      console.log('✅ User updated to admin: admin@pitetris.com / admin123');
+    } else {
+      console.log('✅ Admin user already exists: admin@pitetris.com / admin123');
+    }
+  } catch (error) {
+    console.error('Error setting up admin user:', error);
+  }
+
+  // Simple admin login - check email/password against database
   app.post('/api/admin/login', async (req, res) => {
     try {
-      // In development mode, automatically login as admin
-      if (process.env.NODE_ENV === 'development') {
-        const mockAdminUser = {
-          id: 'local-admin-user',
-          email: 'admin@pitetris.local',
-          firstName: 'Local',
-          lastName: 'Admin',
-          isAdmin: true,
-          loginType: 'direct'
-        };
-        
-        // Set session for direct login
-        if (req.session) {
-          (req.session as any).directAdminUser = mockAdminUser;
-        }
-        
-        return res.json({ 
-          message: 'Login successful (development mode)', 
-          user: mockAdminUser
-        });
+      const { email, password } = req.body;
+      
+      if (!email || !password) {
+        return res.status(400).json({ message: 'Email and password required' });
       }
       
-      // Production logic would go here
-      return res.status(501).json({ message: 'Admin login not implemented for production' });
+      // Check if user exists and is admin
+      const user = await storage.getUserByEmail(email);
+      
+      if (!user || !user.isAdmin) {
+        return res.status(401).json({ message: 'Invalid admin credentials' });
+      }
+      
+      // Check password (simple check for now)
+      if (user.adminPassword !== password) {
+        return res.status(401).json({ message: 'Invalid admin credentials' });
+      }
+      
+      // Set session
+      if (req.session) {
+        (req.session as any).adminUser = {
+          id: user.id,
+          email: user.email,
+          firstName: user.firstName,
+          lastName: user.lastName,
+          isAdmin: true
+        };
+      }
+      
+      return res.json({ 
+        message: 'Login successful',
+        user: {
+          id: user.id,
+          email: user.email,
+          firstName: user.firstName,
+          lastName: user.lastName,
+          isAdmin: true
+        }
+      });
+      
     } catch (error) {
-      console.error('Direct admin login error:', error);
+      console.error('Admin login error:', error);
       res.status(500).json({ message: 'Internal server error' });
     }
   });
@@ -61,9 +107,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Auth routes  
   app.get('/api/auth/user', async (req: any, res) => {
     try {
-      // Check for direct admin login first
-      if (req.session && (req.session as any).directAdminUser) {
-        return res.json((req.session as any).directAdminUser);
+      // Check for admin login first
+      if (req.session && (req.session as any).adminUser) {
+        return res.json((req.session as any).adminUser);
       }
       
       // Then check Replit Auth
@@ -82,9 +128,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
   
   // Logout route for both direct and Replit auth
   app.post('/api/auth/logout', (req, res) => {
-    // Clear direct admin session
-    if (req.session && (req.session as any).directAdminUser) {
-      delete (req.session as any).directAdminUser;
+    // Clear admin session
+    if (req.session && (req.session as any).adminUser) {
+      delete (req.session as any).adminUser;
       return res.json({ message: 'Logged out successfully' });
     }
     
