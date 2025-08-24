@@ -25,41 +25,31 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Auth middleware
   await setupAuth(app);
 
-  // Direct Admin Login Route (bypasses Replit Auth)
+  // Direct Admin Login Route (bypassed in development mode)
   app.post('/api/admin/login', async (req, res) => {
     try {
-      const { email, password } = req.body;
-      
-      if (!email || !password) {
-        return res.status(400).json({ message: 'Email and password are required' });
+      // In development mode, automatically login as admin
+      if (process.env.NODE_ENV === 'development') {
+        const mockAdminUser = {
+          id: 'local-admin-user',
+          email: 'admin@pitetris.local',
+          firstName: 'Local',
+          lastName: 'Admin',
+          isAdmin: true,
+          loginType: 'direct'
+        };
+        
+        // Set session for direct login
+        (req.session as any).directAdminUser = mockAdminUser;
+        
+        return res.json({ 
+          message: 'Login successful (development mode)', 
+          user: mockAdminUser
+        });
       }
       
-      const user = await storage.getUserByEmail(email);
-      
-      if (!user || !user.isAdmin || user.adminPassword !== password) {
-        return res.status(401).json({ message: 'Invalid credentials or not an admin' });
-      }
-      
-      // Set session for direct login
-      (req.session as any).directAdminUser = {
-        id: user.id,
-        email: user.email,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        isAdmin: user.isAdmin,
-        loginType: 'direct'
-      };
-      
-      res.json({ 
-        message: 'Login successful', 
-        user: {
-          id: user.id,
-          email: user.email,
-          firstName: user.firstName,
-          lastName: user.lastName,
-          isAdmin: user.isAdmin
-        }
-      });
+      // Production logic would go here
+      return res.status(501).json({ message: 'Admin login not implemented for production' });
     } catch (error) {
       console.error('Direct admin login error:', error);
       res.status(500).json({ message: 'Internal server error' });

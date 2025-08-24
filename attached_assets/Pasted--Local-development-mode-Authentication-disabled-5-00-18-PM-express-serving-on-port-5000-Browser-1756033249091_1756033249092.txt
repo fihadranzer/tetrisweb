@@ -1,0 +1,51 @@
+🔧 Local development mode: Authentication disabled
+5:00:18 PM [express] serving on port 5000
+Browserslist: browsers data (caniuse-lite) is 10 months old. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+Error fetching user: TypeError: Cannot read properties of undefined (reading 'directAdminUser')
+    at <anonymous> (/home/user1/Documents/PiTetrisSite/server/routes.ts:73:32)
+    at Layer.handle [as handle_request] (/home/user1/Documents/PiTetrisSite/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/user1/Documents/PiTetrisSite/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/user1/Documents/PiTetrisSite/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/user1/Documents/PiTetrisSite/node_modules/express/lib/router/layer.js:95:5)
+    at /home/user1/Documents/PiTetrisSite/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/user1/Documents/PiTetrisSite/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/user1/Documents/PiTetrisSite/node_modules/express/lib/router/index.js:280:10)
+    at <anonymous> (/home/user1/Documents/PiTetrisSite/server/index.ts:38:3)
+    at Layer.handle [as handle_request] (/home/user1/Documents/PiTetrisSite/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/user1/Documents/PiTetrisSite/node_modules/express/lib/router/index.js:328:13)
+    at /home/user1/Documents/PiTetrisSite/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/user1/Documents/PiTetrisSite/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/user1/Documents/PiTetrisSite/node_modules/express/lib/router/index.js:280:10)
+    at urlencodedParser (/home/user1/Documents/PiTetrisSite/node_modules/body-parser/lib/types/urlencoded.js:94:7)
+    at Layer.handle [as handle_request] (/home/user1/Documents/PiTetrisSite/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/user1/Documents/PiTetrisSite/node_modules/express/lib/router/index.js:328:13)
+    at /home/user1/Documents/PiTetrisSite/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/user1/Documents/PiTetrisSite/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/user1/Documents/PiTetrisSite/node_modules/express/lib/router/index.js:280:10)
+    at jsonParser (/home/user1/Documents/PiTetrisSite/node_modules/body-parser/lib/types/json.js:113:7)
+    at Layer.handle [as handle_request] (/home/user1/Documents/PiTetrisSite/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/user1/Documents/PiTetrisSite/node_modules/express/lib/router/index.js:328:13)
+    at /home/user1/Documents/PiTetrisSite/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/user1/Documents/PiTetrisSite/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/user1/Documents/PiTetrisSite/node_modules/express/lib/router/index.js:280:10)
+    at expressInit (/home/user1/Documents/PiTetrisSite/node_modules/express/lib/middleware/init.js:40:5)
+    at Layer.handle [as handle_request] (/home/user1/Documents/PiTetrisSite/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/user1/Documents/PiTetrisSite/node_modules/express/lib/router/index.js:328:13)
+    at /home/user1/Documents/PiTetrisSite/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/user1/Documents/PiTetrisSite/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/user1/Documents/PiTetrisSite/node_modules/express/lib/router/index.js:280:10)
+    at query (/home/user1/Documents/PiTetrisSite/node_modules/express/lib/middleware/query.js:45:5)
+    at Layer.handle [as handle_request] (/home/user1/Documents/PiTetrisSite/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/user1/Documents/PiTetrisSite/node_modules/express/lib/router/index.js:328:13)
+    at /home/user1/Documents/PiTetrisSite/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/user1/Documents/PiTetrisSite/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/user1/Documents/PiTetrisSite/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/user1/Documents/PiTetrisSite/node_modules/express/lib/router/index.js:175:3)
+    at Function.handle (/home/user1/Documents/PiTetrisSite/node_modules/express/lib/application.js:181:10)
+    at Server.app (/home/user1/Documents/PiTetrisSite/node_modules/express/lib/express.js:39:9)
+    at Server.emit (node:events:518:28)
+    at parserOnIncoming (node:_http_server:1155:12)
+    at HTTPParser.parserOnHeadersComplete (node:_http_common:117:17)
+5:00:21 PM [express] GET /api/auth/user 500 in 10ms :: {"message":"Failed to fetch user"}
