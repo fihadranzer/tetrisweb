@@ -40,7 +40,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
         };
         
         // Set session for direct login
-        (req.session as any).directAdminUser = mockAdminUser;
+        if (req.session) {
+          (req.session as any).directAdminUser = mockAdminUser;
+        }
         
         return res.json({ 
           message: 'Login successful (development mode)', 
@@ -60,7 +62,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.get('/api/auth/user', async (req: any, res) => {
     try {
       // Check for direct admin login first
-      if ((req.session as any).directAdminUser) {
+      if (req.session && (req.session as any).directAdminUser) {
         return res.json((req.session as any).directAdminUser);
       }
       
@@ -81,7 +83,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Logout route for both direct and Replit auth
   app.post('/api/auth/logout', (req, res) => {
     // Clear direct admin session
-    if ((req.session as any).directAdminUser) {
+    if (req.session && (req.session as any).directAdminUser) {
       delete (req.session as any).directAdminUser;
       return res.json({ message: 'Logged out successfully' });
     }
