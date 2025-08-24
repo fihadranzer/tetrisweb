@@ -30,6 +30,10 @@ import AIMLDevelopment from "@/pages/services/AIMLDevelopment";
 import ERPCRMCMSDevelopment from "@/pages/services/ERPCRMCMSDevelopment";
 import CustomSoftwareDevelopment from "@/pages/services/CustomSoftwareDevelopment";
 import DataEngineering from "@/pages/services/DataEngineering";
+import MobileAppDevelopment from "@/pages/services/MobileAppDevelopment";
+import DevOpsCloud from "@/pages/services/DevOpsCloud";
+import ChatbotDevelopment from "@/pages/services/ChatbotDevelopment";
+import ProjectDelivery from "@/pages/services/ProjectDelivery";
 
 function PublicRoutes() {
   return (
@@ -42,9 +46,18 @@ function PublicRoutes() {
         <Route path="/services/dedicated-team" component={DedicatedTeam} />
         <Route path="/services/staff-augmentation" component={StaffAugmentation} />
         <Route path="/services/ai-ml-development" component={AIMLDevelopment} />
+        <Route path="/services/ai-ml" component={AIMLDevelopment} />
         <Route path="/services/erp-crm-cms-development" component={ERPCRMCMSDevelopment} />
+        <Route path="/services/erp-crm" component={ERPCRMCMSDevelopment} />
         <Route path="/services/custom-software-development" component={CustomSoftwareDevelopment} />
+        <Route path="/services/custom-software" component={CustomSoftwareDevelopment} />
         <Route path="/services/data-engineering" component={DataEngineering} />
+        <Route path="/services/mobile-app-development" component={MobileAppDevelopment} />
+        <Route path="/services/mobile-app" component={MobileAppDevelopment} />
+        <Route path="/services/devops-cloud" component={DevOpsCloud} />
+        <Route path="/services/chatbot-development" component={ChatbotDevelopment} />
+        <Route path="/services/chatbots" component={ChatbotDevelopment} />
+        <Route path="/services/project-delivery" component={ProjectDelivery} />
         
         <Route path="/services/:slug" component={ServiceDetail} />
         <Route path="/portfolio" component={Portfolio} />
