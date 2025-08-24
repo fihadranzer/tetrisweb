@@ -10,6 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Star, TrendingUp, Users, Award } from "lucide-react";
 import { Link } from "wouter";
+import { motion } from "framer-motion";
 
 export default function Home() {
   const { data: services = [] } = useQuery({
@@ -78,34 +79,61 @@ export default function Home() {
       {/* Services Section */}
       <section id="services" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Custom Software Development Solutions Expertise</h2>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto">
               At Pi Tetris, we master the frameworks and technologies that power modern solutions. With our deep domain expertise, we help you modernize, innovate, and maintain your critical software applications.
             </p>
-          </div>
+          </motion.div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {services.slice(0, 7).map((service: any) => (
-              <ServiceCard key={service.id} service={service} />
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            {services.slice(0, 7).map((service: any, index: number) => (
+              <motion.div
+                key={service.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <ServiceCard service={service} />
+              </motion.div>
             ))}
             
             {/* Call to Action Card */}
-            <Card className="bg-gradient-to-br from-blue-600 to-blue-700 text-white hover:shadow-lg transition-shadow">
-              <CardContent className="p-6">
-                <div className="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center mb-4">
-                  <ArrowRight className="w-6 h-6" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">Build Intelligent Apps</h3>
-                <p className="text-blue-100 mb-4">Start Today</p>
-                <Link href="/contact">
-                  <span className="text-white font-medium hover:text-blue-100 transition-colors cursor-pointer" data-testid="link-contact">
-                    Contact Us →
-                  </span>
-                </Link>
-              </CardContent>
-            </Card>
-          </div>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.7 }}
+              viewport={{ once: true }}
+            >
+              <Card className="bg-gradient-to-br from-blue-600 to-blue-700 text-white hover:shadow-lg transition-shadow">
+                <CardContent className="p-6">
+                  <div className="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center mb-4">
+                    <ArrowRight className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2">Build Intelligent Apps</h3>
+                  <p className="text-blue-100 mb-4">Start Today</p>
+                  <Link href="/contact">
+                    <span className="text-white font-medium hover:text-blue-100 transition-colors cursor-pointer" data-testid="link-contact">
+                      Contact Us →
+                    </span>
+                  </Link>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
@@ -198,14 +226,20 @@ export default function Home() {
               ))}
             </div>
 
-            <div className="text-center mt-12">
+            <motion.div 
+              className="text-center mt-12"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
               <Link href="/portfolio">
-                <Button data-testid="button-view-all-case-studies">
+                <Button className="bg-blue-600 text-white hover:bg-blue-700 font-semibold" data-testid="button-view-all-case-studies">
                   View All Case Studies
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
-            </div>
+            </motion.div>
           </div>
         </section>
       )}
@@ -213,38 +247,70 @@ export default function Home() {
       {/* Stats Section */}
       <section className="py-20 bg-blue-600 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
             <h2 className="text-4xl font-bold mb-4">We Are A Top-Rated Software Development Company for a Reason</h2>
             <p className="text-xl text-blue-100 max-w-4xl mx-auto">
               We deliver highly skilled software engineers, data science professionals, and cloud specialists who consistently solve problems, complete tasks and work to power your projects forward.
             </p>
-          </div>
+          </motion.div>
           
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
-            <div>
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              viewport={{ once: true }}
+            >
               <div className="flex items-center justify-center mb-2">
                 <Star className="w-6 h-6 text-yellow-400 mr-2" />
                 <div className="text-4xl font-bold">4.9</div>
               </div>
               <div className="text-blue-100">stars</div>
               <div className="text-sm text-blue-200 mt-1">Verified Client Rating</div>
-            </div>
-            <div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
               <div className="text-4xl font-bold mb-2">93%</div>
               <div className="text-blue-100">Promoter Score</div>
               <div className="text-sm text-blue-200 mt-1">Client's willing to refer us</div>
-            </div>
-            <div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              viewport={{ once: true }}
+            >
               <div className="text-4xl font-bold mb-2">200%</div>
               <div className="text-blue-100">Retention Rate</div>
               <div className="text-sm text-blue-200 mt-1">Annual growth in renewals</div>
-            </div>
-            <div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.6 }}
+              viewport={{ once: true }}
+            >
               <div className="text-4xl font-bold mb-2">350+</div>
               <div className="text-blue-100">Projects</div>
               <div className="text-sm text-blue-200 mt-1">Successfully delivered</div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
@@ -294,14 +360,20 @@ export default function Home() {
               ))}
             </div>
 
-            <div className="text-center mt-12">
+            <motion.div 
+              className="text-center mt-12"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
               <Link href="/about">
-                <Button variant="outline" data-testid="button-meet-full-team">
+                <Button variant="outline" className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-semibold" data-testid="button-meet-full-team">
                   Meet the Full Team
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
-            </div>
+            </motion.div>
           </div>
         </section>
       )}

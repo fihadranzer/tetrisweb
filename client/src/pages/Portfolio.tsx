@@ -136,7 +136,7 @@ export default function Portfolio() {
             <h3 className="text-xl font-semibold text-gray-900 mb-2">No projects found</h3>
             <p className="text-gray-600 mb-4">Try adjusting your search criteria or clearing the filters.</p>
             <Button 
-              variant="outline"
+              className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-semibold"
               onClick={() => {
                 setSearchTerm("");
                 setSelectedCategory("");

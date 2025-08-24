@@ -138,13 +138,13 @@ export default function Services() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/contact">
-              <Button size="lg" variant="secondary" data-testid="button-schedule-consultation">
+              <Button size="lg" className="bg-white text-blue-700 hover:bg-blue-50 font-semibold" data-testid="button-schedule-consultation">
                 Schedule a Consultation
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
             <Link href="/portfolio">
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600" data-testid="button-view-our-work">
+              <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-blue-700 bg-transparent font-semibold" data-testid="button-view-our-work">
                 View Our Work
               </Button>
             </Link>
