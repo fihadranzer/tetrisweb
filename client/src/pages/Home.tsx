@@ -51,30 +51,83 @@ export default function Home() {
       <Hero />
 
       {/* Client Logos */}
-      {clients.length > 0 && (
-        <section className="py-12 bg-gray-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <p className="text-center text-gray-600 mb-8 text-lg font-medium">From startups to Fortune 500</p>
-            <div className="grid grid-cols-2 md:grid-cols-6 gap-8 items-center">
-              {clients.slice(0, 6).map((client: any) => (
-                <div key={client.id} className="text-center opacity-60 hover:opacity-100 transition-opacity">
+      <motion.section 
+        className="py-16 bg-gradient-to-r from-gray-50 to-blue-50"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <p className="text-gray-600 text-sm font-medium uppercase tracking-wide mb-2">Trusted by</p>
+            <h3 className="text-2xl font-bold text-gray-900">From startups to Fortune 500</h3>
+            <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-blue-600 mx-auto mt-4 rounded-full"></div>
+          </motion.div>
+          
+          {clients.length > 0 ? (
+            <motion.div 
+              className="grid grid-cols-2 md:grid-cols-6 gap-8 items-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              {clients.slice(0, 6).map((client: any, index: number) => (
+                <motion.div 
+                  key={client.id} 
+                  className="text-center group"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                >
                   {client.logoUrl ? (
                     <img 
                       src={client.logoUrl} 
                       alt={client.name}
-                      className="h-12 mx-auto object-contain"
+                      className="h-16 mx-auto object-contain opacity-60 group-hover:opacity-100 transition-all duration-300 filter grayscale group-hover:grayscale-0"
                     />
                   ) : (
-                    <div className="h-12 bg-gray-300 rounded flex items-center justify-center">
-                      <span className="text-gray-600 font-semibold text-sm">{client.name}</span>
+                    <div className="h-16 bg-white rounded-xl shadow-lg flex items-center justify-center group-hover:shadow-xl transition-all duration-300">
+                      <span className="text-gray-700 font-bold text-sm px-4">{client.name}</span>
                     </div>
                   )}
-                </div>
+                </motion.div>
               ))}
-            </div>
-          </div>
-        </section>
-      )}
+            </motion.div>
+          ) : (
+            <motion.div 
+              className="grid grid-cols-2 md:grid-cols-6 gap-8 items-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              {['Meta', 'Google', 'Microsoft', 'Amazon', 'Netflix', 'Tesla'].map((name, index) => (
+                <motion.div 
+                  key={name}
+                  className="text-center group"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="h-16 bg-white rounded-xl shadow-lg flex items-center justify-center group-hover:shadow-xl transition-all duration-300">
+                    <span className="text-gray-700 font-bold text-sm px-4">{name}</span>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          )}
+        </div>
+      </motion.section>
 
       {/* Services Section */}
       <section id="services" className="py-20 bg-white">
@@ -118,17 +171,18 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.7 }}
               viewport={{ once: true }}
             >
-              <Card className="bg-gradient-to-br from-blue-600 to-blue-700 text-white hover:shadow-lg transition-shadow">
-                <CardContent className="p-6">
-                  <div className="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center mb-4">
-                    <ArrowRight className="w-6 h-6" />
+              <Card className="bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 text-white hover:shadow-2xl transition-all duration-300 overflow-hidden relative">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-16 translate-x-16"></div>
+                <CardContent className="p-8 relative z-10">
+                  <div className="w-16 h-16 bg-white/20 rounded-xl flex items-center justify-center mb-6 backdrop-blur-sm">
+                    <ArrowRight className="w-8 h-8" />
                   </div>
-                  <h3 className="text-xl font-semibold mb-2">Build Intelligent Apps</h3>
-                  <p className="text-blue-100 mb-4">Start Today</p>
+                  <h3 className="text-2xl font-bold mb-3">Build Intelligent Apps</h3>
+                  <p className="text-blue-100 mb-6 text-lg">Start Today</p>
                   <Link href="/contact">
-                    <span className="text-white font-medium hover:text-blue-100 transition-colors cursor-pointer" data-testid="link-contact">
-                      Contact Us →
-                    </span>
+                    <Button className="bg-white text-blue-700 hover:bg-gray-100 font-bold px-6 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300" data-testid="button-contact-cta">
+                      Contact Us <ArrowRight className="ml-2 w-4 h-4" />
+                    </Button>
                   </Link>
                 </CardContent>
               </Card>
@@ -314,58 +368,58 @@ export default function Home() {
           
           {/* Awards and Recognition */}
           <motion.div 
-            className="mt-20 bg-white rounded-2xl p-12 shadow-lg"
+            className="mt-20 bg-gradient-to-r from-blue-50 to-indigo-100 rounded-2xl p-12 shadow-lg"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
             <div className="text-center mb-12">
-              <h3 className="text-3xl font-bold text-white mb-4">Awards and Recognition</h3>
-              <p className="text-xl text-blue-100 mb-8">Industry recognition for our exceptional software development expertise</p>
+              <h3 className="text-3xl font-bold text-gray-900 mb-4">Awards and Recognition</h3>
+              <p className="text-xl text-gray-700 mb-8">Industry recognition for our exceptional software development expertise</p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <motion.div
-                className="text-center p-6 bg-blue-500/20 rounded-lg backdrop-blur-sm"
+                className="text-center p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
                 viewport={{ once: true }}
               >
-                <div className="w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Award className="w-8 h-8 text-yellow-800" />
+                <div className="w-16 h-16 bg-gradient-to-br from-yellow-400 to-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                  <Award className="w-8 h-8 text-white" />
                 </div>
-                <h4 className="font-semibold text-white mb-2">Top AI Developer 2024</h4>
-                <p className="text-blue-200">Clutch</p>
+                <h4 className="font-bold text-gray-900 mb-2">Top AI Developer 2024</h4>
+                <p className="text-gray-600 font-medium">Clutch</p>
               </motion.div>
               
               <motion.div
-                className="text-center p-6 bg-blue-500/20 rounded-lg backdrop-blur-sm"
+                className="text-center p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
                 viewport={{ once: true }}
               >
-                <div className="w-16 h-16 bg-blue-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
                   <Star className="w-8 h-8 text-white" />
                 </div>
-                <h4 className="font-semibold text-white mb-2">Top Software Developer 2024</h4>
-                <p className="text-blue-200">DesignRush</p>
+                <h4 className="font-bold text-gray-900 mb-2">Top Software Developer 2024</h4>
+                <p className="text-gray-600 font-medium">DesignRush</p>
               </motion.div>
               
               <motion.div
-                className="text-center p-6 bg-blue-500/20 rounded-lg backdrop-blur-sm"
+                className="text-center p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
                 viewport={{ once: true }}
               >
-                <div className="w-16 h-16 bg-green-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
                   <TrendingUp className="w-8 h-8 text-white" />
                 </div>
-                <h4 className="font-semibold text-white mb-2">Innovation Company of 2024</h4>
-                <p className="text-blue-200">TechBehemoths</p>
+                <h4 className="font-bold text-gray-900 mb-2">Innovation Company of 2024</h4>
+                <p className="text-gray-600 font-medium">TechBehemoths</p>
               </motion.div>
             </div>
           </motion.div>
@@ -394,48 +448,57 @@ export default function Home() {
             viewport={{ once: true }}
           >
             <motion.div
-              className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
+              className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-blue-500"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
               viewport={{ once: true }}
             >
-              <div className="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                <span className="text-blue-600 font-bold text-lg">AI</span>
+              <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-6 shadow-lg">
+                <span className="text-white font-bold text-xl">AI</span>
               </div>
-              <h3 className="font-semibold text-gray-900 mb-2">Fortune 500 Tech Company</h3>
-              <p className="text-gray-600 text-sm mb-4">Developed Generative AI Voice Assistant for Gaming. Built Standalone AI model (NLP)</p>
-              <span className="text-blue-600 text-sm font-medium">AI/ML Development</span>
+              <h3 className="font-bold text-gray-900 mb-3 text-lg">Fortune 500 Tech Company</h3>
+              <p className="text-gray-600 mb-6 leading-relaxed">Developed Generative AI Voice Assistant for Gaming. Built Standalone AI model (NLP) with advanced conversational capabilities.</p>
+              <div className="flex items-center justify-between">
+                <span className="px-3 py-1 bg-blue-100 text-blue-700 text-sm font-semibold rounded-full">AI/ML Development</span>
+                <ArrowRight className="w-5 h-5 text-blue-500" />
+              </div>
             </motion.div>
             
             <motion.div
-              className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
+              className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-green-500"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              <div className="w-16 h-16 bg-green-100 rounded-lg flex items-center justify-center mb-4">
-                <span className="text-green-600 font-bold text-lg">WEB</span>
+              <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center mb-6 shadow-lg">
+                <span className="text-white font-bold text-xl">WEB</span>
               </div>
-              <h3 className="font-semibold text-gray-900 mb-2">Healthcare Technology Leader</h3>
-              <p className="text-gray-600 text-sm mb-4">Designed, Developed, and Deployed Automated Knowledge Discovery Engine</p>
-              <span className="text-green-600 text-sm font-medium">Web Application Development</span>
+              <h3 className="font-bold text-gray-900 mb-3 text-lg">Healthcare Technology Leader</h3>
+              <p className="text-gray-600 mb-6 leading-relaxed">Designed, Developed, and Deployed Automated Knowledge Discovery Engine with advanced analytics and reporting capabilities.</p>
+              <div className="flex items-center justify-between">
+                <span className="px-3 py-1 bg-green-100 text-green-700 text-sm font-semibold rounded-full">Web Development</span>
+                <ArrowRight className="w-5 h-5 text-green-500" />
+              </div>
             </motion.div>
             
             <motion.div
-              className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
+              className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-purple-500"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
               viewport={{ once: true }}
             >
-              <div className="w-16 h-16 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                <span className="text-purple-600 font-bold text-lg">DATA</span>
+              <div className="w-20 h-20 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mb-6 shadow-lg">
+                <span className="text-white font-bold text-xl">DATA</span>
               </div>
-              <h3 className="font-semibold text-gray-900 mb-2">Global Media Company</h3>
-              <p className="text-gray-600 text-sm mb-4">Designed and Developed Semantic Search Using GPT-2.0</p>
-              <span className="text-purple-600 text-sm font-medium">Data Engineering</span>
+              <h3 className="font-bold text-gray-900 mb-3 text-lg">Global Media Company</h3>
+              <p className="text-gray-600 mb-6 leading-relaxed">Designed and Developed Semantic Search Using GPT-2.0 with intelligent content discovery and personalization features.</p>
+              <div className="flex items-center justify-between">
+                <span className="px-3 py-1 bg-purple-100 text-purple-700 text-sm font-semibold rounded-full">Data Engineering</span>
+                <ArrowRight className="w-5 h-5 text-purple-500" />
+              </div>
             </motion.div>
             
             <motion.div
@@ -488,29 +551,56 @@ export default function Home() {
 
       {/* Technology Stack */}
       {Object.keys(techCategories).length > 0 && (
-        <section id="technologies" className="py-20 bg-white">
+        <section id="technologies" className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">We are a Full Stack Software Development Company</h2>
-              <p className="text-xl text-gray-600 max-w-4xl mx-auto">
+            <motion.div 
+              className="text-center mb-16"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-4xl font-bold text-gray-900 mb-6">We are a Full Stack Software Development Company</h2>
+              <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
                 We have built a business focused on assembling talented developers who have mastered the frameworks and technologies that power modern solutions.
               </p>
-            </div>
+              <div className="mt-8">
+                <Link href="/contact">
+                  <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 text-lg font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300" data-testid="button-start-today">
+                    Start Today <ArrowRight className="ml-2 w-5 h-5" />
+                  </Button>
+                </Link>
+              </div>
+            </motion.div>
             
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-              {Object.entries(techCategories).map(([categoryName, techs]: [string, any]) => (
-                <div key={categoryName}>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4 uppercase">{categoryName.replace('-', ' ')}</h3>
-                  <div className="space-y-2">
+            <motion.div 
+              className="grid grid-cols-1 lg:grid-cols-4 gap-8"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              {Object.entries(techCategories).map(([categoryName, techs]: [string, any], categoryIndex: number) => (
+                <motion.div 
+                  key={categoryName}
+                  className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: categoryIndex * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <h3 className="text-xl font-bold text-gray-900 mb-6 uppercase tracking-wide border-b-2 border-blue-100 pb-3">{categoryName.replace('-', ' ')}</h3>
+                  <div className="space-y-3">
                     {(techs as any[]).map((tech: any) => (
-                      <a key={tech.id} href={tech.websiteUrl} target="_blank" rel="noopener noreferrer" className="block text-blue-600 hover:text-blue-700 transition-colors" data-testid={`link-technology-${tech.slug}`}>
-                        {tech.name}
+                      <a key={tech.id} href={tech.websiteUrl} target="_blank" rel="noopener noreferrer" className="flex items-center text-gray-700 hover:text-blue-600 transition-all duration-200 group" data-testid={`link-technology-${tech.slug}`}>
+                        <ArrowRight className="w-4 h-4 mr-2 text-gray-400 group-hover:text-blue-500 group-hover:translate-x-1 transition-all" />
+                        <span className="font-medium">{tech.name}</span>
                       </a>
                     ))}
                   </div>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </section>
       )}
