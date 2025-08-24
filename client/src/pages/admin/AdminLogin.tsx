@@ -10,7 +10,7 @@ import { apiRequest } from "@/lib/queryClient";
 
 export default function AdminLogin() {
   const [email, setEmail] = useState('admin@pitetris.com');
-  const [password, setPassword] = useState('');
+  const [password, setPassword] = useState('admin123');
   const [showDirectLogin, setShowDirectLogin] = useState(true); // Show direct login by default
   const { toast } = useToast();
   
@@ -113,10 +113,16 @@ export default function AdminLogin() {
                 </div>
               ) : (
                 <form onSubmit={handleDirectLogin} className="space-y-4">
-                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
-                    <div className="text-sm text-blue-800">
-                      <strong>Admin Login:</strong><br/>
-                      Use your admin credentials to access the content management system.
+                  <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-4">
+                    <div className="text-sm text-green-800">
+                      <strong>🔧 Development Mode - Admin Credentials:</strong><br/>
+                      <div className="mt-2 font-mono text-xs bg-white p-2 rounded border">
+                        <div><strong>Email:</strong> admin@pitetris.com</div>
+                        <div><strong>Password:</strong> admin123</div>
+                      </div>
+                      <div className="mt-2 text-xs">
+                        Or use any email/password - authentication is bypassed in development.
+                      </div>
                     </div>
                   </div>
                   
@@ -140,7 +146,7 @@ export default function AdminLogin() {
                       type="password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      placeholder="Enter admin password"
+                      placeholder="admin123"
                       className="mt-1"
                       data-testid="input-admin-password"
                     />
@@ -158,10 +164,22 @@ export default function AdminLogin() {
                     ) : (
                       <>
                         <LogIn className="mr-2 h-4 w-4" />
-                        Login as Admin
+                        Login as Admin (Development Mode)
                       </>
                     )}
                   </Button>
+                  
+                  <div className="text-center">
+                    <Button 
+                      type="button"
+                      variant="outline"
+                      className="w-full"
+                      onClick={() => window.location.href = '/admin'}
+                      data-testid="button-bypass-login"
+                    >
+                      🚀 Skip Login (Direct Admin Access)
+                    </Button>
+                  </div>
                   
                   <div className="text-center">
                     <button
