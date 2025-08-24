@@ -52,6 +52,7 @@ export interface IStorage {
   createService(service: InsertService): Promise<Service>;
   updateService(id: string, service: Partial<InsertService>): Promise<Service>;
   deleteService(id: string): Promise<void>;
+  initializeDefaultServices(): Promise<void>;
   
   // Case study operations
   getCaseStudies(): Promise<CaseStudy[]>;
@@ -191,6 +192,79 @@ export class DatabaseStorage implements IStorage {
       .values(service)
       .returning();
     return newService;
+  }
+
+  // Initialize default services if they don't exist
+  async initializeDefaultServices(): Promise<void> {
+    try {
+      console.log('Initializing default services...');
+      const existingServices = await this.getServices();
+      console.log('Existing services count:', existingServices.length);
+      
+      const defaultServices = [
+        {
+          title: "Web Application Development",
+          slug: "web-application-development",
+          shortDescription: "Custom web applications built with modern technologies for scalable, secure, and user-friendly digital solutions.",
+          longDescription: "Our web application development services focus on creating robust, scalable, and secure web solutions tailored to your business needs. We leverage cutting-edge technologies and best practices to deliver high-performance applications that drive business growth and enhance user experience.",
+          features: [
+            "Custom Web Applications",
+            "Progressive Web Apps (PWA)",
+            "Single Page Applications (SPA)",
+            "Enterprise Web Portals",
+            "E-commerce Platforms",
+            "Content Management Systems",
+            "API Development & Integration",
+            "Database Design & Optimization",
+            "Cloud Deployment & Scaling",
+            "Security Implementation"
+          ],
+          technologies: [
+            "React", "Vue.js", "Angular", "Node.js", "Python", "Django", "Flask", 
+            "PHP", "Laravel", "Ruby on Rails", "PostgreSQL", "MongoDB", "AWS", "Docker"
+          ],
+          isActive: true,
+          sortOrder: 1
+        },
+        {
+          title: "Mobile App Development",
+          slug: "mobile-app-development",
+          shortDescription: "Native and cross-platform mobile applications that deliver exceptional user experiences across iOS and Android devices.",
+          longDescription: "We specialize in developing high-quality mobile applications that engage users and drive business success. Our mobile app development services cover the entire development lifecycle, from concept and design to deployment and maintenance, ensuring your app stands out in the competitive mobile marketplace.",
+          features: [
+            "Native iOS Development",
+            "Native Android Development",
+            "Cross-Platform Development",
+            "React Native Applications",
+            "Flutter Applications",
+            "Mobile UI/UX Design",
+            "App Store Optimization",
+            "Push Notifications",
+            "Offline Functionality",
+            "Mobile App Analytics"
+          ],
+          technologies: [
+            "React Native", "Flutter", "Swift", "Kotlin", "Java", "Dart", 
+            "Xamarin", "Ionic", "Firebase", "SQLite", "Core Data", "Room"
+          ],
+          isActive: true,
+          sortOrder: 2
+        }
+      ];
+
+      for (const service of defaultServices) {
+        const exists = existingServices.find(s => s.slug === service.slug);
+        if (!exists) {
+          console.log(`Creating service: ${service.title}`);
+          await this.createService(service);
+          console.log(`Created default service: ${service.title}`);
+        } else {
+          console.log(`Service already exists: ${service.title}`);
+        }
+      }
+    } catch (error) {
+      console.error('Error initializing default services:', error);
+    }
   }
 
   async updateService(id: string, service: Partial<InsertService>): Promise<Service> {
