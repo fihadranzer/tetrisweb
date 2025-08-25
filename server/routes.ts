@@ -115,7 +115,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.json((req.session as any).adminUser);
       }
       
-      // Then check Replit Auth
+      // In local development, return unauthorized for frontend to handle
+      if (process.env.NODE_ENV === 'development') {
+        return res.status(401).json({ message: "Unauthorized" });
+      }
+      
+      // Then check Replit Auth for production
       if (!req.isAuthenticated() || !req.user?.claims?.sub) {
         return res.status(401).json({ message: "Unauthorized" });
       }
