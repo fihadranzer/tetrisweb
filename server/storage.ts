@@ -151,15 +151,16 @@ export class DatabaseStorage implements IStorage {
   async createCategory(category: InsertCategory): Promise<Category> {
     const [newCategory] = await db
       .insert(categories)
-      .values(category)
+      .values([category])
       .returning();
     return newCategory;
   }
 
   async updateCategory(id: string, category: Partial<InsertCategory>): Promise<Category> {
+    const updateData: any = { ...category, updatedAt: new Date() };
     const [updatedCategory] = await db
       .update(categories)
-      .set({ ...category, updatedAt: new Date() })
+      .set(updateData)
       .where(eq(categories.id, id))
       .returning();
     return updatedCategory;
@@ -189,7 +190,7 @@ export class DatabaseStorage implements IStorage {
   async createService(service: InsertService): Promise<Service> {
     const [newService] = await db
       .insert(services)
-      .values(service)
+      .values([service])
       .returning();
     return newService;
   }
@@ -268,9 +269,10 @@ export class DatabaseStorage implements IStorage {
   }
 
   async updateService(id: string, service: Partial<InsertService>): Promise<Service> {
+    const updateData: any = { ...service, updatedAt: new Date() };
     const [updatedService] = await db
       .update(services)
-      .set({ ...service, updatedAt: new Date() })
+      .set(updateData)
       .where(eq(services.id, id))
       .returning();
     return updatedService;
@@ -309,15 +311,16 @@ export class DatabaseStorage implements IStorage {
   async createCaseStudy(caseStudy: InsertCaseStudy): Promise<CaseStudy> {
     const [newCaseStudy] = await db
       .insert(caseStudies)
-      .values(caseStudy)
+      .values([caseStudy])
       .returning();
     return newCaseStudy;
   }
 
   async updateCaseStudy(id: string, caseStudy: Partial<InsertCaseStudy>): Promise<CaseStudy> {
+    const updateData: any = { ...caseStudy, updatedAt: new Date() };
     const [updatedCaseStudy] = await db
       .update(caseStudies)
-      .set({ ...caseStudy, updatedAt: new Date() })
+      .set(updateData)
       .where(eq(caseStudies.id, id))
       .returning();
     return updatedCaseStudy;
@@ -339,15 +342,16 @@ export class DatabaseStorage implements IStorage {
   async createTeamMember(teamMember: InsertTeamMember): Promise<TeamMember> {
     const [newTeamMember] = await db
       .insert(teamMembers)
-      .values(teamMember)
+      .values([teamMember])
       .returning();
     return newTeamMember;
   }
 
   async updateTeamMember(id: string, teamMember: Partial<InsertTeamMember>): Promise<TeamMember> {
+    const updateData: any = { ...teamMember, updatedAt: new Date() };
     const [updatedTeamMember] = await db
       .update(teamMembers)
-      .set({ ...teamMember, updatedAt: new Date() })
+      .set(updateData)
       .where(eq(teamMembers.id, id))
       .returning();
     return updatedTeamMember;
@@ -378,15 +382,16 @@ export class DatabaseStorage implements IStorage {
   async createTestimonial(testimonial: InsertTestimonial): Promise<Testimonial> {
     const [newTestimonial] = await db
       .insert(testimonials)
-      .values(testimonial)
+      .values([testimonial])
       .returning();
     return newTestimonial;
   }
 
   async updateTestimonial(id: string, testimonial: Partial<InsertTestimonial>): Promise<Testimonial> {
+    const updateData: any = { ...testimonial, updatedAt: new Date() };
     const [updatedTestimonial] = await db
       .update(testimonials)
-      .set({ ...testimonial, updatedAt: new Date() })
+      .set(updateData)
       .where(eq(testimonials.id, id))
       .returning();
     return updatedTestimonial;
@@ -408,15 +413,16 @@ export class DatabaseStorage implements IStorage {
   async createClient(client: InsertClient): Promise<Client> {
     const [newClient] = await db
       .insert(clients)
-      .values(client)
+      .values([client])
       .returning();
     return newClient;
   }
 
   async updateClient(id: string, client: Partial<InsertClient>): Promise<Client> {
+    const updateData: any = { ...client, updatedAt: new Date() };
     const [updatedClient] = await db
       .update(clients)
-      .set({ ...client, updatedAt: new Date() })
+      .set(updateData)
       .where(eq(clients.id, id))
       .returning();
     return updatedClient;
@@ -441,15 +447,16 @@ export class DatabaseStorage implements IStorage {
   async createTechnology(technology: InsertTechnology): Promise<Technology> {
     const [newTechnology] = await db
       .insert(technologies)
-      .values(technology)
+      .values([technology])
       .returning();
     return newTechnology;
   }
 
   async updateTechnology(id: string, technology: Partial<InsertTechnology>): Promise<Technology> {
+    const updateData: any = { ...technology, updatedAt: new Date() };
     const [updatedTechnology] = await db
       .update(technologies)
-      .set({ ...technology, updatedAt: new Date() })
+      .set(updateData)
       .where(eq(technologies.id, id))
       .returning();
     return updatedTechnology;
@@ -470,7 +477,7 @@ export class DatabaseStorage implements IStorage {
   async createContactSubmission(submission: InsertContactSubmission): Promise<ContactSubmission> {
     const [newSubmission] = await db
       .insert(contactSubmissions)
-      .values(submission)
+      .values([submission])
       .returning();
     return newSubmission;
   }

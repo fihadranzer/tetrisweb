@@ -2,9 +2,12 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 // Use local auth for development, Replit auth for production
-const authModule = process.env.NODE_ENV === 'development' 
-  ? await import("./localAuth")
-  : await import("./replitAuth");
+let authModule: any;
+if (process.env.NODE_ENV === 'development') {
+  authModule = await import("./localAuth");
+} else {
+  authModule = await import("./replitAuth");
+}
 
 const { setupAuth, isAuthenticated } = authModule;
 import { ObjectStorageService, ObjectNotFoundError } from "./objectStorage";
@@ -315,9 +318,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   // Admin-only routes (protected)
 
-  // Check if user is admin
+  // Check if user is admin - bypass for local development
   const isAdmin = async (req: any, res: any, next: any) => {
     try {
+      // For local development, check session first
+      if (req.session && (req.session as any).adminUser) {
+        return next();
+      }
+      
       const userId = req.user?.claims?.sub;
       if (!userId) {
         return res.status(401).json({ message: "Unauthorized" });
@@ -337,7 +345,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   // Admin object storage routes
   app.get("/objects/:objectPath(*)", isAuthenticated, async (req, res) => {
-    const userId = req.user?.claims?.sub;
+    const userId = (req as any).user?.claims?.sub;
     const objectStorageService = new ObjectStorageService();
     try {
       const objectFile = await objectStorageService.getObjectEntityFile(req.path);
@@ -657,7 +665,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
 
     try {
-      const userId = req.user?.claims?.sub;
+      const userId = (req as any).user?.claims?.sub;
       const objectStorageService = new ObjectStorageService();
       const objectPath = await objectStorageService.trySetObjectEntityAclPolicy(
         req.body.imageURL,
