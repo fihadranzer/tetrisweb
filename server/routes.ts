@@ -28,82 +28,103 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Auth middleware
   await setupAuth(app);
 
-  // Create admin user if doesn't exist
-  try {
-    const adminEmail = 'admin@pitetris.com';
-    let adminUser = await storage.getUserByEmail(adminEmail);
-    
-    if (!adminUser) {
-      console.log('Creating admin user...');
-      adminUser = await storage.upsertUser({
-        email: adminEmail,
-        firstName: 'Admin',
-        lastName: 'User',
-        isAdmin: true,
-        adminPassword: 'admin123'
-      });
-      console.log('✅ Admin user created: admin@pitetris.com / admin123');
-    } else if (!adminUser.isAdmin) {
-      // Update existing user to be admin
-      adminUser = await storage.upsertUser({
-        ...adminUser,
-        isAdmin: true,
-        adminPassword: 'admin123'
-      });
-      console.log('✅ User updated to admin: admin@pitetris.com / admin123');
-    } else {
-      console.log('✅ Admin user already exists: admin@pitetris.com / admin123');
-    }
-  } catch (error) {
-    console.error('Error setting up admin user:', error);
-  }
+  // New admin email verification system
+  console.log('🔐 Admin system initialized with email verification');
+  console.log('✅ Authorized admin emails: rhfiha@gmail.com, dev.fiha@gmail.com');
 
-  // Simple admin login - check email/password against database
-  app.post('/api/admin/login', async (req, res) => {
+  // Send verification code endpoint
+  app.post('/api/admin/send-verification', async (req, res) => {
     try {
-      const { email, password } = req.body;
+      const { email } = req.body;
       
-      if (!email || !password) {
-        return res.status(400).json({ message: 'Email and password required' });
+      if (!email) {
+        return res.status(400).json({ message: 'Email is required' });
       }
       
-      // Check if user exists and is admin
-      const user = await storage.getUserByEmail(email);
-      
-      if (!user || !user.isAdmin) {
-        return res.status(401).json({ message: 'Invalid admin credentials' });
+      // Check if email is authorized
+      if (!storage.isAllowedAdminEmail(email)) {
+        return res.status(403).json({ message: 'Email not authorized for admin access' });
       }
       
-      // Check password (simple check for now)
-      if (user.adminPassword !== password) {
-        return res.status(401).json({ message: 'Invalid admin credentials' });
+      // Generate and store verification code
+      const { code, expiresAt } = await storage.createVerificationCode(email);
+      
+      // Clean up old codes periodically
+      await storage.cleanupExpiredCodes();
+      
+      res.json({ 
+        message: 'Verification code sent successfully',
+        expiresAt: expiresAt.toISOString()
+      });
+      
+    } catch (error) {
+      console.error('Send verification error:', error);
+      res.status(500).json({ message: 'Failed to send verification code' });
+    }
+  });
+
+  // Verify code and login endpoint
+  app.post('/api/admin/verify-login', async (req, res) => {
+    try {
+      const { email, code } = req.body;
+      
+      if (!email || !code) {
+        return res.status(400).json({ message: 'Email and verification code are required' });
+      }
+      
+      // Check if email is authorized
+      if (!storage.isAllowedAdminEmail(email)) {
+        return res.status(403).json({ message: 'Email not authorized for admin access' });
+      }
+      
+      // Verify the code
+      const isValidCode = await storage.verifyCode(email, code);
+      
+      if (!isValidCode) {
+        return res.status(401).json({ message: 'Invalid or expired verification code' });
+      }
+      
+      // Create/update admin user if needed
+      let adminUser = await storage.getUserByEmail(email);
+      if (!adminUser) {
+        adminUser = await storage.upsertUser({
+          email: email.toLowerCase(),
+          firstName: email.split('@')[0],
+          lastName: '',
+          isAdmin: true
+        });
+      } else if (!adminUser.isAdmin) {
+        adminUser = await storage.upsertUser({
+          ...adminUser,
+          isAdmin: true
+        });
       }
       
       // Set session
       if (req.session) {
         (req.session as any).adminUser = {
-          id: user.id,
-          email: user.email,
-          firstName: user.firstName,
-          lastName: user.lastName,
+          id: adminUser.id,
+          email: adminUser.email,
+          firstName: adminUser.firstName || email.split('@')[0],
+          lastName: adminUser.lastName || '',
           isAdmin: true
         };
       }
       
-      return res.json({ 
+      res.json({ 
         message: 'Login successful',
         user: {
-          id: user.id,
-          email: user.email,
-          firstName: user.firstName,
-          lastName: user.lastName,
+          id: adminUser.id,
+          email: adminUser.email,
+          firstName: adminUser.firstName || email.split('@')[0],
+          lastName: adminUser.lastName || '',
           isAdmin: true
         }
       });
       
     } catch (error) {
-      console.error('Admin login error:', error);
-      res.status(500).json({ message: 'Internal server error' });
+      console.error('Verify login error:', error);
+      res.status(500).json({ message: 'Failed to verify login' });
     }
   });
   

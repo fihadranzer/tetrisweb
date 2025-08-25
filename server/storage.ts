@@ -1,5 +1,6 @@
 import {
   users,
+  adminVerificationCodes,
   categories,
   services,
   caseStudies,
@@ -11,6 +12,8 @@ import {
   siteSettings,
   type User,
   type UpsertUser,
+  type AdminVerificationCode,
+  type InsertAdminVerificationCode,
   type Category,
   type InsertCategory,
   type Service,
@@ -33,11 +36,20 @@ import {
 import { db } from "./db";
 import { eq, desc, and, ilike } from "drizzle-orm";
 
+// Allowed admin emails - only these emails can access admin panel
+const ALLOWED_ADMIN_EMAILS = ['rhfiha@gmail.com', 'dev.fiha@gmail.com'];
+
 export interface IStorage {
   // User operations (required for Replit Auth)
   getUser(id: string): Promise<User | undefined>;
   getUserByEmail(email: string): Promise<User | undefined>;
   upsertUser(user: UpsertUser): Promise<User>;
+  
+  // Admin verification operations
+  isAllowedAdminEmail(email: string): boolean;
+  createVerificationCode(email: string): Promise<{ code: string; expiresAt: Date }>;
+  verifyCode(email: string, code: string): Promise<boolean>;
+  cleanupExpiredCodes(): Promise<void>;
   
   // Category operations
   getCategories(type?: string): Promise<Category[]>;
@@ -125,6 +137,71 @@ export class DatabaseStorage implements IStorage {
       })
       .returning();
     return user;
+  }
+
+  // Admin verification operations
+  isAllowedAdminEmail(email: string): boolean {
+    return ALLOWED_ADMIN_EMAILS.includes(email.toLowerCase());
+  }
+
+  async createVerificationCode(email: string): Promise<{ code: string; expiresAt: Date }> {
+    // Generate a 6-digit verification code
+    const code = Math.floor(100000 + Math.random() * 900000).toString();
+    const expiresAt = new Date(Date.now() + 10 * 60 * 1000); // 10 minutes from now
+
+    await db.insert(adminVerificationCodes).values([{
+      email: email.toLowerCase(),
+      code,
+      expiresAt,
+      isUsed: false,
+    }]);
+
+    // In a real system, you would send this code via email
+    console.log(`🔐 Verification code for ${email}: ${code} (expires in 10 minutes)`);
+
+    return { code, expiresAt };
+  }
+
+  async verifyCode(email: string, code: string): Promise<boolean> {
+    const [verificationRecord] = await db
+      .select()
+      .from(adminVerificationCodes)
+      .where(
+        and(
+          eq(adminVerificationCodes.email, email.toLowerCase()),
+          eq(adminVerificationCodes.code, code),
+          eq(adminVerificationCodes.isUsed, false)
+        )
+      )
+      .orderBy(desc(adminVerificationCodes.createdAt))
+      .limit(1);
+
+    if (!verificationRecord) {
+      return false;
+    }
+
+    // Check if code is expired
+    if (new Date() > verificationRecord.expiresAt) {
+      return false;
+    }
+
+    // Mark code as used
+    await db
+      .update(adminVerificationCodes)
+      .set({ isUsed: true })
+      .where(eq(adminVerificationCodes.id, verificationRecord.id));
+
+    return true;
+  }
+
+  async cleanupExpiredCodes(): Promise<void> {
+    await db
+      .delete(adminVerificationCodes)
+      .where(
+        and(
+          eq(adminVerificationCodes.isUsed, true)
+        )
+      );
   }
 
   // Category operations
