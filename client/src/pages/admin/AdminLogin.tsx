@@ -23,7 +23,7 @@ export default function AdminLogin() {
 
   const sendCodeMutation = useMutation({
     mutationFn: async (email: string) => {
-      return await apiRequest('/api/admin/send-verification', 'POST', { email });
+      return await apiRequest('POST', '/api/admin/send-verification', { email });
     },
     onSuccess: () => {
       setShowVerificationStep(true);
@@ -44,7 +44,7 @@ export default function AdminLogin() {
 
   const verifyCodeMutation = useMutation({
     mutationFn: async ({ email, code }: { email: string; code: string }) => {
-      return await apiRequest('/api/admin/verify-login', 'POST', { email, code });
+      return await apiRequest('POST', '/api/admin/verify-login', { email, code });
     },
     onSuccess: () => {
       toast({
