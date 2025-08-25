@@ -35,6 +35,7 @@ import {
 } from "@shared/schema";
 import { db } from "./db";
 import { eq, desc, and, ilike } from "drizzle-orm";
+import { emailService } from "./emailService";
 
 // Allowed admin emails - only these emails can access admin panel
 const ALLOWED_ADMIN_EMAILS = ['rhfiha@gmail.com', 'dev.fiha@gmail.com'];
@@ -156,15 +157,13 @@ export class DatabaseStorage implements IStorage {
       isUsed: false,
     }]);
 
-    // In a real system, you would send this code via email
-    console.log(`🔐 Verification code for ${email}: ${code} (expires in 10 minutes)`);
+    // Send the verification code via email
+    await emailService.sendVerificationCode(email, code);
 
     return { code, expiresAt };
   }
 
   async verifyCode(email: string, code: string): Promise<boolean> {
-    console.log(`🔍 Verifying code: ${code} for email: ${email.toLowerCase()}`);
-    
     const verificationRecords = await db
       .select()
       .from(adminVerificationCodes)
@@ -177,19 +176,14 @@ export class DatabaseStorage implements IStorage {
       )
       .orderBy(desc(adminVerificationCodes.createdAt));
 
-    console.log(`🔍 Found ${verificationRecords.length} matching records`);
-
     if (!verificationRecords || verificationRecords.length === 0) {
-      console.log('❌ No matching verification records found');
       return false;
     }
 
     const verificationRecord = verificationRecords[0];
-    console.log(`🔍 Checking expiry: ${new Date().toISOString()} vs ${verificationRecord.expiresAt.toISOString()}`);
 
     // Check if code is expired
     if (new Date() > verificationRecord.expiresAt) {
-      console.log('❌ Code is expired');
       return false;
     }
 
@@ -199,7 +193,6 @@ export class DatabaseStorage implements IStorage {
       .set({ isUsed: true })
       .where(eq(adminVerificationCodes.id, verificationRecord.id));
 
-    console.log('✅ Code verified successfully');
     return true;
   }
 
