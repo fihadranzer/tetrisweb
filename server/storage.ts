@@ -163,7 +163,9 @@ export class DatabaseStorage implements IStorage {
   }
 
   async verifyCode(email: string, code: string): Promise<boolean> {
-    const [verificationRecord] = await db
+    console.log(`🔍 Verifying code: ${code} for email: ${email.toLowerCase()}`);
+    
+    const verificationRecords = await db
       .select()
       .from(adminVerificationCodes)
       .where(
@@ -173,15 +175,21 @@ export class DatabaseStorage implements IStorage {
           eq(adminVerificationCodes.isUsed, false)
         )
       )
-      .orderBy(desc(adminVerificationCodes.createdAt))
-      .limit(1);
+      .orderBy(desc(adminVerificationCodes.createdAt));
 
-    if (!verificationRecord) {
+    console.log(`🔍 Found ${verificationRecords.length} matching records`);
+
+    if (!verificationRecords || verificationRecords.length === 0) {
+      console.log('❌ No matching verification records found');
       return false;
     }
 
+    const verificationRecord = verificationRecords[0];
+    console.log(`🔍 Checking expiry: ${new Date().toISOString()} vs ${verificationRecord.expiresAt.toISOString()}`);
+
     // Check if code is expired
     if (new Date() > verificationRecord.expiresAt) {
+      console.log('❌ Code is expired');
       return false;
     }
 
@@ -191,6 +199,7 @@ export class DatabaseStorage implements IStorage {
       .set({ isUsed: true })
       .where(eq(adminVerificationCodes.id, verificationRecord.id));
 
+    console.log('✅ Code verified successfully');
     return true;
   }
 
