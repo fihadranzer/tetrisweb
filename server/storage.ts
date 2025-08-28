@@ -35,7 +35,7 @@ import {
 } from "@shared/schema";
 import { db } from "./db";
 import { eq, desc, and, ilike } from "drizzle-orm";
-import { emailService } from "./emailService";
+import { getEmailService } from "./emailService";
 
 // Allowed admin emails - only these emails can access admin panel
 const ALLOWED_ADMIN_EMAILS = ['rhfiha@gmail.com', 'dev.fiha@gmail.com'];
@@ -158,7 +158,7 @@ export class DatabaseStorage implements IStorage {
     }]);
 
     // Send the verification code via email
-    await emailService.sendVerificationCode(email, code);
+    await getEmailService().sendVerificationCode(email, code);
 
     return { code, expiresAt };
   }

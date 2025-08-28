@@ -19,7 +19,7 @@ export class EmailService {
 
   private setupTransporter() {
     const emailConfig = this.getEmailConfig();
-    
+
     if (!emailConfig) {
       console.log('📧 Email service not configured - using console logging for development');
       return;
@@ -28,29 +28,33 @@ export class EmailService {
     this.transporter = nodemailer.createTransport({
       host: emailConfig.host,
       port: emailConfig.port,
-      secure: emailConfig.secure,
+      secure: emailConfig.secure, // false for 587, true for 465
       auth: {
         user: emailConfig.user,
         pass: emailConfig.password,
       },
+      tls: {
+        rejectUnauthorized: false, // allow Gmail STARTTLS handshake
+      },
     });
 
     this.isConfigured = true;
-    console.log('📧 Email service configured successfully');
+    console.log(`📧 Email service configured: ${emailConfig.host}:${emailConfig.port} as ${emailConfig.user}`);
   }
 
   private getEmailConfig(): EmailConfig | null {
     const requiredEnvVars = [
       'SMTP_HOST',
-      'SMTP_PORT', 
+      'SMTP_PORT',
       'SMTP_USER',
       'SMTP_PASSWORD',
-      'SMTP_FROM'
+      'SMTP_FROM',
     ];
 
-    // Check if all required environment variables are present
-    const missingVars = requiredEnvVars.filter(varName => !process.env[varName]);
-    
+    const missingVars = requiredEnvVars.filter(
+      (varName) => !process.env[varName]
+    );
+
     if (missingVars.length > 0) {
       console.log(`📧 Missing email configuration: ${missingVars.join(', ')}`);
       return null;
@@ -59,7 +63,7 @@ export class EmailService {
     return {
       host: process.env.SMTP_HOST!,
       port: parseInt(process.env.SMTP_PORT!),
-      secure: process.env.SMTP_PORT === '465', // true for 465, false for other ports
+      secure: process.env.SMTP_PORT === '465', // Gmail: false for 587, true for 465
       user: process.env.SMTP_USER!,
       password: process.env.SMTP_PASSWORD!,
       from: process.env.SMTP_FROM!,
@@ -67,9 +71,10 @@ export class EmailService {
   }
 
   async sendVerificationCode(email: string, code: string): Promise<boolean> {
-    // If email is not configured, fall back to console logging
     if (!this.isConfigured || !this.transporter) {
-      console.log(`🔐 Verification code for ${email}: ${code} (expires in 10 minutes)`);
+      console.log(
+        `🔐 Verification code for ${email}: ${code} (expires in 10 minutes)`
+      );
       return true;
     }
 
@@ -107,14 +112,15 @@ export class EmailService {
         `,
       };
 
-      await this.transporter.sendMail(mailOptions);
-      console.log(`📧 Verification code sent to ${email}`);
+      const info = await this.transporter.sendMail(mailOptions);
+      console.log(`📧 Verification code sent to ${email} :: ${info.messageId}`);
       return true;
     } catch (error) {
       console.error('📧 Failed to send email:', error);
-      // Fallback to console logging
-      console.log(`🔐 Email failed - Verification code for ${email}: ${code} (expires in 10 minutes)`);
-      return true; // Don't fail the verification process due to email issues
+      console.log(
+        `🔐 Email failed - Verification code for ${email}: ${code} (expires in 10 minutes)`
+      );
+      return true; // fallback: console still shows code
     }
   }
 
@@ -125,13 +131,20 @@ export class EmailService {
 
     try {
       await this.transporter.verify();
-      console.log('📧 Email service connection verified');
+      console.log('📧 Email service connection verified ✅');
       return true;
     } catch (error) {
-      console.error('📧 Email service connection failed:', error);
+      console.error('📧 Email service connection failed ❌:', error);
       return false;
     }
   }
 }
 
-export const emailService = new EmailService();
+let emailService: EmailService;
+
+export function getEmailService(): EmailService {
+  if (!emailService) {
+    emailService = new EmailService();
+  }
+  return emailService;
+}

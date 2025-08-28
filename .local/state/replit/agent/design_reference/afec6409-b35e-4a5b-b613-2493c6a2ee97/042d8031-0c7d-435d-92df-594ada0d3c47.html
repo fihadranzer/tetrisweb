@@ -1,0 +1,1151 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pi Tetris - Professional IT Solutions & Software Development</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    primary: '#2563eb',
+                    secondary: '#1e40af',
+                    accent: '#3b82f6'
+                },
+                fontFamily: {
+                    'sans': ['Inter', 'system-ui', 'sans-serif']
+                }
+            }
+        }
+    };
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Navigation -->
+    <!-- @COMPONENT: Navigation [responsive header with logo, menu items, and CTA buttons] -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="text-2xl font-bold text-primary" data-mock="true">Pi Tetris</div>
+                </div>
+                
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#services" class="text-gray-900 hover:text-primary px-3 py-2 text-sm font-medium transition-colors" data-mock="true">Services</a>
+                        <a href="#portfolio" class="text-gray-900 hover:text-primary px-3 py-2 text-sm font-medium transition-colors" data-mock="true">Portfolio</a>
+                        <a href="#about" class="text-gray-900 hover:text-primary px-3 py-2 text-sm font-medium transition-colors" data-mock="true">About</a>
+                        <a href="#contact" class="text-gray-900 hover:text-primary px-3 py-2 text-sm font-medium transition-colors" data-mock="true">Contact</a>
+                        <a href="#admin" class="text-gray-900 hover:text-primary px-3 py-2 text-sm font-medium transition-colors" data-mock="true">Admin Portal</a>
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex space-x-4">
+                    <button class="bg-white text-primary border border-primary px-4 py-2 rounded-lg text-sm font-medium hover:bg-primary hover:text-white transition-colors" data-mock="true">Schedule a Call</button>
+                    <button class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-secondary transition-colors" data-mock="true">Get Pricing</button>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button class="text-gray-700 hover:text-primary">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- @END_COMPONENT: Navigation -->
+
+    <!-- Hero Section -->
+    <!-- @COMPONENT: HeroSection [main banner with heading, subheading, CTAs and hero image] -->
+    <section class="bg-gradient-to-br from-primary to-secondary text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h1 class="text-5xl lg:text-6xl font-bold leading-tight mb-6" data-mock="true">
+                        The IT Solutions Company for Modern Business
+                    </h1>
+                    <p class="text-xl text-blue-100 mb-8" data-mock="true">
+                        More efficiency. More innovation. More growth. We design, build, and manage cutting-edge IT solutions that drive your business forward.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button class="bg-white text-primary px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors" data-mock="true">Schedule a Call</button>
+                        <button class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-primary transition-colors" data-mock="true">View Our Work</button>
+                    </div>
+                    
+                    <div class="mt-12 flex items-center space-x-8">
+                        <div class="flex items-center space-x-2">
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="text-blue-100" data-mock="true">4.9 stars</span>
+                        </div>
+                        <div class="text-blue-100" data-mock="true">Verified rating on Clutch.co</div>
+                    </div>
+                </div>
+                
+                <div class="lg:text-right">
+                    <!-- Tech stack visualization mockup -->
+                    <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-8 text-left">
+                        <div class="text-lg font-semibold mb-4" data-mock="true">Our Expertise</div>
+                        <div class="grid grid-cols-2 gap-4 text-sm">
+                            <div class="flex items-center space-x-2" data-mock="true">
+                                <i class="fas fa-robot text-blue-300"></i>
+                                <span>AI & ML</span>
+                            </div>
+                            <div class="flex items-center space-x-2" data-mock="true">
+                                <i class="fas fa-database text-blue-300"></i>
+                                <span>Data Engineering</span>
+                            </div>
+                            <div class="flex items-center space-x-2" data-mock="true">
+                                <i class="fas fa-globe text-blue-300"></i>
+                                <span>Web Development</span>
+                            </div>
+                            <div class="flex items-center space-x-2" data-mock="true">
+                                <i class="fas fa-mobile-alt text-blue-300"></i>
+                                <span>Mobile Apps</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: HeroSection -->
+
+    <!-- Client Logos -->
+    <!-- @COMPONENT: ClientLogos [horizontal scrolling carousel of client company logos] -->
+    <section class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="text-center text-gray-600 mb-8 font-medium" data-mock="true">Trusted by leading companies worldwide</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center opacity-60">
+                <div class="flex justify-center" data-mock="true">
+                    <div class="bg-gray-200 w-24 h-12 rounded flex items-center justify-center text-gray-500 text-xs">Client 1</div>
+                </div>
+                <div class="flex justify-center" data-mock="true">
+                    <div class="bg-gray-200 w-24 h-12 rounded flex items-center justify-center text-gray-500 text-xs">Client 2</div>
+                </div>
+                <div class="flex justify-center" data-mock="true">
+                    <div class="bg-gray-200 w-24 h-12 rounded flex items-center justify-center text-gray-500 text-xs">Client 3</div>
+                </div>
+                <div class="flex justify-center" data-mock="true">
+                    <div class="bg-gray-200 w-24 h-12 rounded flex items-center justify-center text-gray-500 text-xs">Client 4</div>
+                </div>
+                <div class="flex justify-center" data-mock="true">
+                    <div class="bg-gray-200 w-24 h-12 rounded flex items-center justify-center text-gray-500 text-xs">Client 5</div>
+                </div>
+                <div class="flex justify-center" data-mock="true">
+                    <div class="bg-gray-200 w-24 h-12 rounded flex items-center justify-center text-gray-500 text-xs">Client 6</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: ClientLogos -->
+
+    <!-- Services Section -->
+    <!-- @COMPONENT: ServicesGrid [grid layout showing all service offerings with icons and descriptions] -->
+    <section id="services" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4" data-mock="true">Our IT Solutions Expertise</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto" data-mock="true">
+                    At Pi Tetris, we master the technologies and frameworks that power modern business solutions. 
+                    With our deep domain expertise, we help you innovate, scale, and maintain your critical IT infrastructure.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- @MAP: services.map(service => ( -->
+                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-robot text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3" data-mock="true">AI & ML Development</h3>
+                    <p class="text-gray-600 mb-4" data-mock="true">Build intelligent solutions with custom AI and machine learning capabilities.</p>
+                    <a href="#" class="text-primary font-medium hover:text-secondary transition-colors" data-mock="true">Learn More →</a>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-code text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3" data-mock="true">Custom Software Development</h3>
+                    <p class="text-gray-600 mb-4" data-mock="true">Tailored software solutions built to meet your specific business requirements.</p>
+                    <a href="#" class="text-primary font-medium hover:text-secondary transition-colors" data-mock="true">Learn More →</a>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-mobile-alt text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3" data-mock="true">Mobile App Development</h3>
+                    <p class="text-gray-600 mb-4" data-mock="true">Native and cross-platform mobile applications for iOS and Android.</p>
+                    <a href="#" class="text-primary font-medium hover:text-secondary transition-colors" data-mock="true">Learn More →</a>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-database text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3" data-mock="true">Data Engineering</h3>
+                    <p class="text-gray-600 mb-4" data-mock="true">Build robust data pipelines and analytics solutions for informed decision-making.</p>
+                    <a href="#" class="text-primary font-medium hover:text-secondary transition-colors" data-mock="true">Learn More →</a>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-cloud text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3" data-mock="true">Cloud Solutions</h3>
+                    <p class="text-gray-600 mb-4" data-mock="true">Scalable cloud infrastructure and migration services for modern businesses.</p>
+                    <a href="#" class="text-primary font-medium hover:text-secondary transition-colors" data-mock="true">Learn More →</a>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-shield-alt text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3" data-mock="true">Cybersecurity</h3>
+                    <p class="text-gray-600 mb-4" data-mock="true">Comprehensive security solutions to protect your digital assets and data.</p>
+                    <a href="#" class="text-primary font-medium hover:text-secondary transition-colors" data-mock="true">Learn More →</a>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-comments text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3" data-mock="true">IT Consulting</h3>
+                    <p class="text-gray-600 mb-4" data-mock="true">Strategic technology consulting to optimize your IT infrastructure and processes.</p>
+                    <a href="#" class="text-primary font-medium hover:text-secondary transition-colors" data-mock="true">Learn More →</a>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                    <div class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-cogs text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3" data-mock="true">DevOps & Automation</h3>
+                    <p class="text-gray-600 mb-4" data-mock="true">Streamline development and deployment with automated DevOps solutions.</p>
+                    <a href="#" class="text-primary font-medium hover:text-secondary transition-colors" data-mock="true">Learn More →</a>
+                </div>
+                <!-- @END_MAP )) -->
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: ServicesGrid -->
+
+    <!-- Service Models Section -->
+    <!-- @COMPONENT: ServiceModels [different engagement models and pricing structures] -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4" data-mock="true">Our Service Models</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto" data-mock="true">
+                    We are here to accommodate you. From individual specialists to entire teams and expert technical advice, 
+                    we are flexible enough to support you in the ways you need.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="text-center p-8">
+                    <div class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-users text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4" data-mock="true">Staff Augmentation</h3>
+                    <p class="text-gray-600 mb-6" data-mock="true">We scale your team with the essential IT personnel your organization needs.</p>
+                    <a href="#" class="text-primary font-medium hover:text-secondary transition-colors" data-mock="true">Learn More →</a>
+                </div>
+
+                <div class="text-center p-8">
+                    <div class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-project-diagram text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4" data-mock="true">Dedicated Teams</h3>
+                    <p class="text-gray-600 mb-6" data-mock="true">We build dedicated IT teams focused exclusively on your projects and goals.</p>
+                    <a href="#" class="text-primary font-medium hover:text-secondary transition-colors" data-mock="true">Learn More →</a>
+                </div>
+
+                <div class="text-center p-8">
+                    <div class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-handshake text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4" data-mock="true">Project Delivery</h3>
+                    <p class="text-gray-600 mb-6" data-mock="true">We manage requirements, tasks, and deliver your complete IT solution.</p>
+                    <a href="#" class="text-primary font-medium hover:text-secondary transition-colors" data-mock="true">Learn More →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: ServiceModels -->
+
+    <!-- Portfolio/Case Studies Section -->
+    <!-- @COMPONENT: PortfolioGrid [showcase of recent projects with filtering and categories] -->
+    <section id="portfolio" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4" data-mock="true">Our Success Stories</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto" data-mock="true">
+                    Explore our portfolio of successful IT projects and see how we've helped businesses 
+                    transform their operations through innovative technology solutions.
+                </p>
+            </div>
+            
+            <!-- Filter buttons -->
+            <div class="flex justify-center mb-12">
+                <div class="bg-white rounded-lg p-2 shadow-sm">
+                    <button class="px-6 py-2 bg-primary text-white rounded-md font-medium" data-mock="true">All</button>
+                    <button class="px-6 py-2 text-gray-600 hover:text-primary font-medium" data-mock="true">AI/ML</button>
+                    <button class="px-6 py-2 text-gray-600 hover:text-primary font-medium" data-mock="true">Web Development</button>
+                    <button class="px-6 py-2 text-gray-600 hover:text-primary font-medium" data-mock="true">Mobile Apps</button>
+                    <button class="px-6 py-2 text-gray-600 hover:text-primary font-medium" data-mock="true">Data Engineering</button>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- @MAP: caseStudies.map(study => ( -->
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition-shadow">
+                    <!-- Modern minimalist case study image placeholder -->
+                    <div class="h-48 bg-gradient-to-br from-primary to-secondary relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-white text-center">
+                                <i class="fas fa-brain text-4xl mb-2"></i>
+                                <div class="text-sm font-medium" data-mock="true">AI-Powered Analytics</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium" data-mock="true">AI/ML</span>
+                            <span class="text-gray-500 text-sm" data-mock="true">6 months</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3" data-mock="true">Enterprise AI Analytics Platform</h3>
+                        <p class="text-gray-600 mb-4" data-mock="true">Developed a comprehensive AI-driven analytics platform that processes millions of data points to provide actionable business insights.</p>
+                        <a href="#" class="text-primary font-medium hover:text-secondary transition-colors" data-mock="true">View Case Study →</a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition-shadow">
+                    <div class="h-48 bg-gradient-to-br from-green-500 to-teal-600 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-white text-center">
+                                <i class="fas fa-mobile-alt text-4xl mb-2"></i>
+                                <div class="text-sm font-medium" data-mock="true">Mobile Banking App</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-medium" data-mock="true">Mobile</span>
+                            <span class="text-gray-500 text-sm" data-mock="true">8 months</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3" data-mock="true">Secure Mobile Banking Solution</h3>
+                        <p class="text-gray-600 mb-4" data-mock="true">Built a secure, user-friendly mobile banking application with advanced biometric authentication and real-time transaction monitoring.</p>
+                        <a href="#" class="text-primary font-medium hover:text-secondary transition-colors" data-mock="true">View Case Study →</a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition-shadow">
+                    <div class="h-48 bg-gradient-to-br from-purple-500 to-pink-600 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-white text-center">
+                                <i class="fas fa-chart-line text-4xl mb-2"></i>
+                                <div class="text-sm font-medium" data-mock="true">E-commerce Platform</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm font-medium" data-mock="true">Web Development</span>
+                            <span class="text-gray-500 text-sm" data-mock="true">4 months</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3" data-mock="true">Scalable E-commerce Platform</h3>
+                        <p class="text-gray-600 mb-4" data-mock="true">Created a high-performance e-commerce platform capable of handling millions of transactions with seamless user experience.</p>
+                        <a href="#" class="text-primary font-medium hover:text-secondary transition-colors" data-mock="true">View Case Study →</a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition-shadow">
+                    <div class="h-48 bg-gradient-to-br from-orange-500 to-red-600 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-white text-center">
+                                <i class="fas fa-database text-4xl mb-2"></i>
+                                <div class="text-sm font-medium" data-mock="true">Data Warehouse</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-sm font-medium" data-mock="true">Data Engineering</span>
+                            <span class="text-gray-500 text-sm" data-mock="true">10 months</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3" data-mock="true">Enterprise Data Warehouse</h3>
+                        <p class="text-gray-600 mb-4" data-mock="true">Implemented a comprehensive data warehouse solution that unified disparate data sources and improved reporting capabilities by 300%.</p>
+                        <a href="#" class="text-primary font-medium hover:text-secondary transition-colors" data-mock="true">View Case Study →</a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition-shadow">
+                    <div class="h-48 bg-gradient-to-br from-indigo-500 to-blue-600 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-white text-center">
+                                <i class="fas fa-cloud text-4xl mb-2"></i>
+                                <div class="text-sm font-medium" data-mock="true">Cloud Migration</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-sm font-medium" data-mock="true">Cloud</span>
+                            <span class="text-gray-500 text-sm" data-mock="true">12 months</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3" data-mock="true">Enterprise Cloud Migration</h3>
+                        <p class="text-gray-600 mb-4" data-mock="true">Successfully migrated a legacy enterprise system to cloud infrastructure, reducing operational costs by 40% and improving scalability.</p>
+                        <a href="#" class="text-primary font-medium hover:text-secondary transition-colors" data-mock="true">View Case Study →</a>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-lg transition-shadow">
+                    <div class="h-48 bg-gradient-to-br from-teal-500 to-green-600 relative">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-white text-center">
+                                <i class="fas fa-shield-alt text-4xl mb-2"></i>
+                                <div class="text-sm font-medium" data-mock="true">Security Platform</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="bg-teal-100 text-teal-700 px-3 py-1 rounded-full text-sm font-medium" data-mock="true">Cybersecurity</span>
+                            <span class="text-gray-500 text-sm" data-mock="true">5 months</span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-3" data-mock="true">Advanced Security Management</h3>
+                        <p class="text-gray-600 mb-4" data-mock="true">Developed a comprehensive cybersecurity platform with real-time threat detection and automated response capabilities.</p>
+                        <a href="#" class="text-primary font-medium hover:text-secondary transition-colors" data-mock="true">View Case Study →</a>
+                    </div>
+                </div>
+                <!-- @END_MAP )) -->
+            </div>
+            
+            <div class="text-center mt-12">
+                <button class="bg-primary text-white px-8 py-3 rounded-lg font-semibold hover:bg-secondary transition-colors" data-mock="true">View All Case Studies</button>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: PortfolioGrid -->
+
+    <!-- Testimonials Section -->
+    <!-- @COMPONENT: TestimonialsCarousel [client testimonials with photos and company info] -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4" data-mock="true">What Our Clients Say</h2>
+                <p class="text-xl text-gray-600" data-mock="true">Don't just take our word for it - hear from the businesses we've helped transform</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- @MAP: testimonials.map(testimonial => ( -->
+                <div class="bg-gray-50 rounded-xl p-8">
+                    <div class="flex text-yellow-400 mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <blockquote class="text-gray-700 mb-6" data-mock="true">
+                        "Pi Tetris transformed our entire IT infrastructure. Their team delivered exceptional results on time and within budget. The AI solutions they implemented have revolutionized our business operations."
+                    </blockquote>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
+                        <div>
+                            <div class="font-semibold text-gray-900" data-mock="true">Sarah Johnson</div>
+                            <div class="text-gray-600 text-sm" data-mock="true">CTO, TechCorp Solutions</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 rounded-xl p-8">
+                    <div class="flex text-yellow-400 mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <blockquote class="text-gray-700 mb-6" data-mock="true">
+                        "Working with Pi Tetris was a game-changer for our company. Their expertise in data engineering helped us make sense of our complex data landscape and drive meaningful insights."
+                    </blockquote>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
+                        <div>
+                            <div class="font-semibold text-gray-900" data-mock="true">Michael Chen</div>
+                            <div class="text-gray-600 text-sm" data-mock="true">VP of Technology, DataFlow Inc</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 rounded-xl p-8">
+                    <div class="flex text-yellow-400 mb-4">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <blockquote class="text-gray-700 mb-6" data-mock="true">
+                        "The mobile application Pi Tetris developed for us exceeded all expectations. Their attention to detail and commitment to security made all the difference in our project's success."
+                    </blockquote>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
+                        <div>
+                            <div class="font-semibold text-gray-900" data-mock="true">Emily Rodriguez</div>
+                            <div class="text-gray-600 text-sm" data-mock="true">Product Manager, FinSecure</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- @END_MAP )) -->
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: TestimonialsCarousel -->
+
+    <!-- Stats & Recognition Section -->
+    <!-- @COMPONENT: StatsRecognition [company statistics, awards, and certifications] -->
+    <section class="py-20 bg-primary text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4" data-mock="true">We Are A Top-Rated IT Solutions Company for a Reason</h2>
+                <p class="text-xl text-blue-100" data-mock="true">
+                    We deliver highly skilled IT professionals and innovative solutions that consistently solve problems 
+                    and accelerate your business growth.
+                </p>
+            </div>
+            
+            <!-- Stats -->
+            <div class="grid md:grid-cols-4 gap-8 mb-16">
+                <div class="text-center">
+                    <div class="text-4xl font-bold mb-2" data-mock="true">500+</div>
+                    <div class="text-blue-100" data-mock="true">Projects Completed</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold mb-2" data-mock="true">98%</div>
+                    <div class="text-blue-100" data-mock="true">Client Satisfaction</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold mb-2" data-mock="true">150+</div>
+                    <div class="text-blue-100" data-mock="true">Happy Clients</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold mb-2" data-mock="true">24/7</div>
+                    <div class="text-blue-100" data-mock="true">Support Available</div>
+                </div>
+            </div>
+            
+            <!-- Awards -->
+            <div class="text-center mb-8">
+                <h3 class="text-2xl font-semibold mb-8" data-mock="true">Awards and Recognition</h3>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center p-6 bg-white/10 rounded-xl backdrop-blur-sm">
+                    <div class="w-16 h-16 bg-white/20 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-trophy text-2xl text-yellow-300"></i>
+                    </div>
+                    <h4 class="font-semibold mb-2" data-mock="true">Top IT Solutions Provider 2024</h4>
+                    <p class="text-blue-100 text-sm" data-mock="true">Industry Tech Awards</p>
+                </div>
+                <div class="text-center p-6 bg-white/10 rounded-xl backdrop-blur-sm">
+                    <div class="w-16 h-16 bg-white/20 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-award text-2xl text-yellow-300"></i>
+                    </div>
+                    <h4 class="font-semibold mb-2" data-mock="true">Best AI Development Team</h4>
+                    <p class="text-blue-100 text-sm" data-mock="true">TechBehemoths</p>
+                </div>
+                <div class="text-center p-6 bg-white/10 rounded-xl backdrop-blur-sm">
+                    <div class="w-16 h-16 bg-white/20 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-medal text-2xl text-yellow-300"></i>
+                    </div>
+                    <h4 class="font-semibold mb-2" data-mock="true">Excellence in Innovation</h4>
+                    <p class="text-blue-100 text-sm" data-mock="true">Business Excellence Awards</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: StatsRecognition -->
+
+    <!-- Technology Stack Section -->
+    <!-- @COMPONENT: TechnologyStack [technologies and tools used by the company] -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4" data-mock="true">We Are A Full Stack IT Solutions Company</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto" data-mock="true">
+                    We have built a business focused on assembling talented professionals who have mastered 
+                    the technologies and frameworks that power modern IT solutions.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-12">
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-6" data-mock="true">BACK-END</h3>
+                    <div class="space-y-3">
+                        <div class="text-primary hover:text-secondary font-medium cursor-pointer" data-mock="true">Python</div>
+                        <div class="text-primary hover:text-secondary font-medium cursor-pointer" data-mock="true">Java</div>
+                        <div class="text-primary hover:text-secondary font-medium cursor-pointer" data-mock="true">Node.js</div>
+                        <div class="text-primary hover:text-secondary font-medium cursor-pointer" data-mock="true">C#/.NET</div>
+                        <div class="text-primary hover:text-secondary font-medium cursor-pointer" data-mock="true">PHP</div>
+                        <div class="text-primary hover:text-secondary font-medium cursor-pointer" data-mock="true">Go</div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-6" data-mock="true">FRONT-END</h3>
+                    <div class="space-y-3">
+                        <div class="text-primary hover:text-secondary font-medium cursor-pointer" data-mock="true">React</div>
+                        <div class="text-primary hover:text-secondary font-medium cursor-pointer" data-mock="true">Angular</div>
+                        <div class="text-primary hover:text-secondary font-medium cursor-pointer" data-mock="true">Vue.js</div>
+                        <div class="text-primary hover:text-secondary font-medium cursor-pointer" data-mock="true">Next.js</div>
+                        <div class="text-primary hover:text-secondary font-medium cursor-pointer" data-mock="true">TypeScript</div>
+                        <div class="text-primary hover:text-secondary font-medium cursor-pointer" data-mock="true">Flutter</div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-6" data-mock="true">AI/ML</h3>
+                    <div class="space-y-3">
+                        <div class="text-primary hover:text-secondary font-medium cursor-pointer" data-mock="true">TensorFlow</div>
+                        <div class="text-primary hover:text-secondary font-medium cursor-pointer" data-mock="true">PyTorch</div>
+                        <div class="text-primary hover:text-secondary font-medium cursor-pointer" data-mock="true">OpenAI</div>
+                        <div class="text-primary hover:text-secondary font-medium cursor-pointer" data-mock="true">Anthropic</div>
+                        <div class="text-primary hover:text-secondary font-medium cursor-pointer" data-mock="true">Keras</div>
+                        <div class="text-primary hover:text-secondary font-medium cursor-pointer" data-mock="true">LLaMA</div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-6" data-mock="true">CLOUD/DEVOPS</h3>
+                    <div class="space-y-3">
+                        <div class="text-primary hover:text-secondary font-medium cursor-pointer" data-mock="true">AWS</div>
+                        <div class="text-primary hover:text-secondary font-medium cursor-pointer" data-mock="true">Azure</div>
+                        <div class="text-primary hover:text-secondary font-medium cursor-pointer" data-mock="true">Google Cloud</div>
+                        <div class="text-primary hover:text-secondary font-medium cursor-pointer" data-mock="true">Docker</div>
+                        <div class="text-primary hover:text-secondary font-medium cursor-pointer" data-mock="true">Kubernetes</div>
+                        <div class="text-primary hover:text-secondary font-medium cursor-pointer" data-mock="true">Terraform</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: TechnologyStack -->
+
+    <!-- About/Team Section -->
+    <!-- @COMPONENT: AboutTeam [company information and team member profiles] -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-4xl font-bold text-gray-900 mb-6" data-mock="true">About Pi Tetris</h2>
+                    <p class="text-xl text-gray-600 mb-6" data-mock="true">
+                        Founded in 2015, Pi Tetris has grown from a small startup to a leading IT solutions provider. 
+                        We specialize in delivering innovative technology solutions that drive business growth and digital transformation.
+                    </p>
+                    <p class="text-gray-600 mb-8" data-mock="true">
+                        Our team of experienced professionals combines deep technical expertise with industry knowledge 
+                        to deliver solutions that not only meet current needs but also position our clients for future success. 
+                        We believe in building long-term partnerships based on trust, transparency, and exceptional results.
+                    </p>
+                    <div class="grid grid-cols-3 gap-8">
+                        <div>
+                            <div class="text-3xl font-bold text-primary" data-mock="true">8+</div>
+                            <div class="text-gray-600" data-mock="true">Years Experience</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold text-primary" data-mock="true">50+</div>
+                            <div class="text-gray-600" data-mock="true">Expert Developers</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold text-primary" data-mock="true">24/7</div>
+                            <div class="text-gray-600" data-mock="true">Support</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <!-- Company team photo placeholder -->
+                    <div class="bg-gradient-to-br from-primary to-secondary rounded-2xl p-8 text-white">
+                        <div class="text-center">
+                            <i class="fas fa-users text-6xl mb-4 opacity-80"></i>
+                            <h3 class="text-2xl font-semibold mb-4" data-mock="true">Our Expert Team</h3>
+                            <p class="text-blue-100" data-mock="true">
+                                Passionate professionals dedicated to delivering exceptional IT solutions 
+                                and driving innovation in every project we undertake.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Team Members -->
+            <div class="mt-20">
+                <h3 class="text-3xl font-bold text-gray-900 text-center mb-12" data-mock="true">Meet Our Leadership Team</h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- @MAP: teamMembers.map(member => ( -->
+                    <div class="text-center">
+                        <div class="w-32 h-32 bg-gray-300 rounded-full mx-auto mb-4"></div>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-1" data-mock="true">John Smith</h4>
+                        <p class="text-primary font-medium mb-2" data-mock="true">CEO & Founder</p>
+                        <p class="text-gray-600 text-sm" data-mock="true">15+ years in enterprise technology leadership and digital transformation.</p>
+                    </div>
+
+                    <div class="text-center">
+                        <div class="w-32 h-32 bg-gray-300 rounded-full mx-auto mb-4"></div>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-1" data-mock="true">Sarah Davis</h4>
+                        <p class="text-primary font-medium mb-2" data-mock="true">CTO</p>
+                        <p class="text-gray-600 text-sm" data-mock="true">AI/ML expert with 12+ years in building scalable software architectures.</p>
+                    </div>
+
+                    <div class="text-center">
+                        <div class="w-32 h-32 bg-gray-300 rounded-full mx-auto mb-4"></div>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-1" data-mock="true">Michael Brown</h4>
+                        <p class="text-primary font-medium mb-2" data-mock="true">VP of Engineering</p>
+                        <p class="text-gray-600 text-sm" data-mock="true">Full-stack development specialist with expertise in cloud infrastructure.</p>
+                    </div>
+
+                    <div class="text-center">
+                        <div class="w-32 h-32 bg-gray-300 rounded-full mx-auto mb-4"></div>
+                        <h4 class="text-xl font-semibold text-gray-900 mb-1" data-mock="true">Lisa Wilson</h4>
+                        <p class="text-primary font-medium mb-2" data-mock="true">Head of Operations</p>
+                        <p class="text-gray-600 text-sm" data-mock="true">Project management expert ensuring seamless delivery and client success.</p>
+                    </div>
+                    <!-- @END_MAP )) -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: AboutTeam -->
+
+    <!-- Contact Section -->
+    <!-- @COMPONENT: ContactSection [contact forms, company information, and location details] -->
+    <section id="contact" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4" data-mock="true">Get in Touch</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto" data-mock="true">
+                    Ready to transform your business with innovative IT solutions? 
+                    Let's discuss your project and explore how we can help you achieve your goals.
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-16">
+                <!-- Contact Form -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm">
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-6" data-mock="true">Send us a Message</h3>
+                    <form class="space-y-6" data-implementation="Should integrate with backend contact form handler">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2" data-mock="true">First Name</label>
+                                <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" data-mock="true">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2" data-mock="true">Last Name</label>
+                                <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" data-mock="true">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2" data-mock="true">Email Address</label>
+                            <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" data-mock="true">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2" data-mock="true">Company</label>
+                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" data-mock="true">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2" data-mock="true">Service Interested In</label>
+                            <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" data-mock="true">
+                                <option>Select a service</option>
+                                <option>AI & ML Development</option>
+                                <option>Custom Software Development</option>
+                                <option>Mobile App Development</option>
+                                <option>Data Engineering</option>
+                                <option>Cloud Solutions</option>
+                                <option>IT Consulting</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2" data-mock="true">Project Description</label>
+                            <textarea rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Tell us about your project requirements..." data-mock="true"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-primary text-white py-4 px-6 rounded-lg font-semibold hover:bg-secondary transition-colors" data-event="click:handleSubmit" data-implementation="Should validate form before submission" data-mock="true">Send Message</button>
+                    </form>
+                </div>
+                
+                <!-- Contact Information -->
+                <div>
+                    <div class="bg-white rounded-2xl p-8 shadow-sm mb-8">
+                        <h3 class="text-2xl font-semibold text-gray-900 mb-6" data-mock="true">Contact Information</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-map-marker-alt text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900" data-mock="true">Office Location</h4>
+                                    <p class="text-gray-600" data-mock="true">123 Tech Boulevard<br>Innovation District<br>San Francisco, CA 94105</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-phone text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900" data-mock="true">Phone Number</h4>
+                                    <p class="text-gray-600" data-mock="true">+1 (555) 123-4567</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-envelope text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900" data-mock="true">Email Address</h4>
+                                    <p class="text-gray-600" data-mock="true">contact@pitetris.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-clock text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900" data-mock="true">Business Hours</h4>
+                                    <p class="text-gray-600" data-mock="true">Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 10:00 AM - 4:00 PM<br>Sunday: Closed</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Social Media Links -->
+                    <div class="bg-white rounded-2xl p-8 shadow-sm">
+                        <h3 class="text-xl font-semibold text-gray-900 mb-4" data-mock="true">Follow Us</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-12 h-12 bg-primary text-white rounded-lg flex items-center justify-center hover:bg-secondary transition-colors" data-mock="true">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 bg-primary text-white rounded-lg flex items-center justify-center hover:bg-secondary transition-colors" data-mock="true">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 bg-primary text-white rounded-lg flex items-center justify-center hover:bg-secondary transition-colors" data-mock="true">
+                                <i class="fab fa-facebook"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 bg-primary text-white rounded-lg flex items-center justify-center hover:bg-secondary transition-colors" data-mock="true">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: ContactSection -->
+
+    <!-- CMS/Admin Portal Section -->
+    <!-- @COMPONENT: AdminPortal [content management system interface preview] -->
+    <section id="admin" class="py-20 bg-white border-t-4 border-primary">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4" data-mock="true">Content Management System</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto" data-mock="true">
+                    Manage all your website content with our intuitive CMS portal. 
+                    Update text, images, case studies, testimonials, and more without technical knowledge.
+                </p>
+            </div>
+            
+            <!-- CMS Demo Interface -->
+            <div class="bg-gray-100 rounded-2xl p-8 max-w-5xl mx-auto">
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+                    <!-- CMS Header -->
+                    <div class="bg-primary text-white px-6 py-4 flex items-center justify-between">
+                        <h3 class="text-xl font-semibold" data-mock="true">Pi Tetris CMS Admin Portal</h3>
+                        <div class="flex items-center space-x-4">
+                            <span class="text-blue-100" data-mock="true">Welcome, Admin</span>
+                            <button class="bg-white/20 px-4 py-2 rounded text-sm" data-mock="true">Logout</button>
+                        </div>
+                    </div>
+                    
+                    <!-- CMS Navigation -->
+                    <div class="bg-gray-50 px-6 py-3 border-b">
+                        <div class="flex space-x-8">
+                            <button class="text-primary font-medium border-b-2 border-primary pb-3" data-mock="true">Dashboard</button>
+                            <button class="text-gray-600 hover:text-primary pb-3" data-mock="true">Content Pages</button>
+                            <button class="text-gray-600 hover:text-primary pb-3" data-mock="true">Case Studies</button>
+                            <button class="text-gray-600 hover:text-primary pb-3" data-mock="true">Testimonials</button>
+                            <button class="text-gray-600 hover:text-primary pb-3" data-mock="true">Team Members</button>
+                            <button class="text-gray-600 hover:text-primary pb-3" data-mock="true">Media Library</button>
+                        </div>
+                    </div>
+                    
+                    <!-- CMS Content Area -->
+                    <div class="p-6">
+                        <div class="grid md:grid-cols-3 gap-6">
+                            <!-- Quick Stats -->
+                            <div class="bg-gradient-to-br from-blue-50 to-primary/10 p-6 rounded-xl">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h4 class="font-semibold text-gray-900" data-mock="true">Content Overview</h4>
+                                    <i class="fas fa-chart-bar text-primary"></i>
+                                </div>
+                                <div class="space-y-3">
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600" data-mock="true">Pages</span>
+                                        <span class="font-medium" data-mock="true">12</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600" data-mock="true">Case Studies</span>
+                                        <span class="font-medium" data-mock="true">24</span>
+                                    </div>
+                                    <div class="flex justify-between">
+                                        <span class="text-gray-600" data-mock="true">Testimonials</span>
+                                        <span class="font-medium" data-mock="true">18</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Recent Activity -->
+                            <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h4 class="font-semibold text-gray-900" data-mock="true">Recent Updates</h4>
+                                    <i class="fas fa-clock text-green-600"></i>
+                                </div>
+                                <div class="space-y-3 text-sm">
+                                    <div class="text-gray-600" data-mock="true">• Updated homepage hero section</div>
+                                    <div class="text-gray-600" data-mock="true">• Added new case study</div>
+                                    <div class="text-gray-600" data-mock="true">• Modified team member profile</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Quick Actions -->
+                            <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl">
+                                <div class="flex items-center justify-between mb-4">
+                                    <h4 class="font-semibold text-gray-900" data-mock="true">Quick Actions</h4>
+                                    <i class="fas fa-lightning-bolt text-purple-600"></i>
+                                </div>
+                                <div class="space-y-3">
+                                    <button class="w-full bg-white text-left px-4 py-2 rounded text-sm hover:bg-gray-50" data-mock="true">+ Add Case Study</button>
+                                    <button class="w-full bg-white text-left px-4 py-2 rounded text-sm hover:bg-gray-50" data-mock="true">+ Add Testimonial</button>
+                                    <button class="w-full bg-white text-left px-4 py-2 rounded text-sm hover:bg-gray-50" data-mock="true">+ Upload Images</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Content Management Features -->
+                        <div class="mt-8">
+                            <h4 class="text-lg font-semibold text-gray-900 mb-4" data-mock="true">Content Management Features</h4>
+                            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                                <div class="text-center p-4 border border-gray-200 rounded-lg hover:border-primary transition-colors">
+                                    <i class="fas fa-edit text-2xl text-primary mb-3"></i>
+                                    <h5 class="font-medium text-gray-900 mb-2" data-mock="true">Text Editor</h5>
+                                    <p class="text-sm text-gray-600" data-mock="true">Rich text editing for all content sections</p>
+                                </div>
+                                
+                                <div class="text-center p-4 border border-gray-200 rounded-lg hover:border-primary transition-colors">
+                                    <i class="fas fa-images text-2xl text-primary mb-3"></i>
+                                    <h5 class="font-medium text-gray-900 mb-2" data-mock="true">Media Manager</h5>
+                                    <p class="text-sm text-gray-600" data-mock="true">Upload and organize images and documents</p>
+                                </div>
+                                
+                                <div class="text-center p-4 border border-gray-200 rounded-lg hover:border-primary transition-colors">
+                                    <i class="fas fa-chart-line text-2xl text-primary mb-3"></i>
+                                    <h5 class="font-medium text-gray-900 mb-2" data-mock="true">Analytics</h5>
+                                    <p class="text-sm text-gray-600" data-mock="true">Track content performance and engagement</p>
+                                </div>
+                                
+                                <div class="text-center p-4 border border-gray-200 rounded-lg hover:border-primary transition-colors">
+                                    <i class="fas fa-users-cog text-2xl text-primary mb-3"></i>
+                                    <h5 class="font-medium text-gray-900 mb-2" data-mock="true">User Management</h5>
+                                    <p class="text-sm text-gray-600" data-mock="true">Control access and permissions</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CMS Benefits -->
+            <div class="mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-mouse-pointer text-2xl text-primary"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold text-gray-900 mb-3" data-mock="true">Easy to Use</h4>
+                    <p class="text-gray-600" data-mock="true">Intuitive interface designed for non-technical users to update content effortlessly.</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-sync-alt text-2xl text-primary"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold text-gray-900 mb-3" data-mock="true">Real-time Updates</h4>
+                    <p class="text-gray-600" data-mock="true">Changes appear instantly on your website without any technical deployment process.</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-shield-alt text-2xl text-primary"></i>
+                    </div>
+                    <h4 class="text-xl font-semibold text-gray-900 mb-3" data-mock="true">Secure & Reliable</h4>
+                    <p class="text-gray-600" data-mock="true">Built with enterprise-grade security and automated backups for peace of mind.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: AdminPortal -->
+
+    <!-- Footer -->
+    <!-- @COMPONENT: Footer [company links, contact info, and legal information] -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div>
+                    <div class="text-2xl font-bold text-white mb-4" data-mock="true">Pi Tetris</div>
+                    <p class="text-gray-300 mb-6" data-mock="true">
+                        Leading IT solutions provider delivering innovative technology that drives business growth and digital transformation.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors" data-mock="true">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors" data-mock="true">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors" data-mock="true">
+                            <i class="fab fa-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors" data-mock="true">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Services -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4" data-mock="true">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors" data-mock="true">AI & ML Development</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors" data-mock="true">Custom Software</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors" data-mock="true">Mobile Apps</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors" data-mock="true">Data Engineering</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors" data-mock="true">Cloud Solutions</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Company -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4" data-mock="true">Company</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors" data-mock="true">About Us</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors" data-mock="true">Our Team</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors" data-mock="true">Case Studies</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors" data-mock="true">Testimonials</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors" data-mock="true">Careers</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4" data-mock="true">Contact</h4>
+                    <div class="space-y-3 text-gray-300">
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span data-mock="true">123 Tech Boulevard, SF 94105</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-phone"></i>
+                            <span data-mock="true">+1 (555) 123-4567</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-envelope"></i>
+                            <span data-mock="true">contact@pitetris.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer Bottom -->
+            <div class="border-t border-gray-800 mt-12 pt-8 flex md:justify-between items-center">
+                <p class="text-gray-400" data-mock="true">&copy; 2024 Pi Tetris. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors" data-mock="true">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors" data-mock="true">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- @END_COMPONENT: Footer -->
+
+    <!-- Smooth scroll and basic interactivity -->
+    <script>
+    (function() {
+        // TODO: Implement business logic, API calls, or state management
+        
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle (basic functionality)
+        const mobileMenuButton = document.querySelector('.md\\:hidden button');
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', function() {
+                // TODO: Implement mobile menu toggle functionality
+                console.log('Mobile menu toggle clicked');
+            });
+        }
+
+        // Contact form submission handler
+        const contactForm = document.querySelector('form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                // TODO: Implement form validation and submission
+                console.log('Contact form submitted');
+                alert('Thank you for your message! We will get back to you soon.');
+            });
+        }
+
+        // Portfolio filter functionality
+        const filterButtons = document.querySelectorAll('.flex.justify-center button');
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => {
+                    btn.classList.remove('bg-primary', 'text-white');
+                    btn.classList.add('text-gray-600');
+                });
+                // Add active class to clicked button
+                this.classList.add('bg-primary', 'text-white');
+                this.classList.remove('text-gray-600');
+                
+                // TODO: Implement portfolio filtering logic
+                console.log('Filter clicked:', this.textContent);
+            });
+        });
+    })();
+    </script>
+</body>
+</html>
